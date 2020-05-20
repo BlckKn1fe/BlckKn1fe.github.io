@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Java Note P4 黑马程序员 | 黑刀的个人墨客</title>
+  <meta name="keywords" content=" Java , Note ">
+  <meta name="description" content="Java Note P4 黑马程序员 | 黑刀的个人墨客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Note P4 黑马程序员">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/index.html">
+<meta property="og:site_name" content="黑刀的个人墨客">
+<meta property="og:description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200516214932.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519223858.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519230216.png">
+<meta property="article:published_time" content="2020-03-05T09:40:06.000Z">
+<meta property="article:modified_time" content="2020-05-20T10:45:34.955Z">
+<meta property="article:author" content="黑刀">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.0.1" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>黑刀</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/BlckKn1fe" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lding1003@gmail.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=553658519&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=121733025" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="All">All<small>(5)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Java">Java<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Life">Life<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">Friends</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://flowermushroom.github.io">花蘑菇</a></li>
+            
+            <li><a target="_blank" href="https://www.yeliulee.com/">琉璃</a></li>
+            
+            <li><a target="_blank" href="https://www.cnblogs.com/nightrainlemon">夜雨柠檬</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Note</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All Java "
+           href="/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P4 黑马程序员">Java Note P4 黑马程序员</span>
+            <span class="post-date" title="2020-03-05 17:40:06">2020/03/05</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/11/18/Java-Note-P3-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P3 (黑马程序员)">Java Note P3 (黑马程序员)</span>
+            <span class="post-date" title="2019-11-18 12:43:23">2019/11/18</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/15/Java-Note-P2-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P2 (黑马程序员）">Java Note P2 (黑马程序员）</span>
+            <span class="post-date" title="2019-10-15 23:39:14">2019/10/15</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/09/Java-Note-P1-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P1 (黑马程序员)">Java Note P1 (黑马程序员)</span>
+            <span class="post-date" title="2019-10-09 00:33:50">2019/10/09</span>
+        </a>
+        
+        <a  class="All Life "
+           href="/2019/10/04/%E6%B2%A1%E6%83%B3%E5%88%B0%E6%88%91%E4%B9%9F%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="没想到我也二十二了">没想到我也二十二了</span>
+            <span class="post-date" title="2019-10-04 00:16:35">2019/10/04</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Java-Note-P4-黑马程序员" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Java Note P4 黑马程序员</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+            <a class="color5">Note</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-05-20 18:45:34'>2020-03-05 17:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-集合和异常"><span class="toc-text">P4 集合和异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-text">Collection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本的方法"><span class="toc-text">基本的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历"><span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三种迭代删除元素"><span class="toc-text">三种迭代删除元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ListIterator"><span class="toc-text">ListIterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义对象"><span class="toc-text">自定义对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型"><span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型接口"><span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通配符"><span class="toc-text">通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上下边界"><span class="toc-text">上下边界</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合和数组互转"><span class="toc-text">集合和数组互转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组转集合"><span class="toc-text">数组转集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合转数组"><span class="toc-text">集合转数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存储自定义对象"><span class="toc-text">存储自定义对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet"><span class="toc-text">LinkedHashSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TreeSet"><span class="toc-text">TreeSet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存储自定义对象-1"><span class="toc-text">存储自定义对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Comparator的巧用"><span class="toc-text">Comparator的巧用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-和-Set-的关系"><span class="toc-text">Map 和 Set 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put-和-remove-方法"><span class="toc-text">put 和 remove 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-的迭代"><span class="toc-text">Map 的迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-存自定义对象"><span class="toc-text">Map 存自定义对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap-和-Hashtable-的区别"><span class="toc-text">HashMap 和 Hashtable 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception"><span class="toc-text">Exception</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Try…-Catch-使用"><span class="toc-text">Try… Catch 使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译时异常"><span class="toc-text">编译时异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用方法"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw的用法"><span class="toc-text">throw的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw-和-throws"><span class="toc-text">throw 和 throws</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finally-用法"><span class="toc-text">finally 用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finally详解"><span class="toc-text">finally详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义异常"><span class="toc-text">自定义异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异常练习"><span class="toc-text">异常练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File类"><span class="toc-text">File类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件-夹"><span class="toc-text">创建文件&#x2F;夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改名-路径和删除"><span class="toc-text">改名&#x2F;路径和删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断功能"><span class="toc-text">判断功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取功能"><span class="toc-text">获取功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤器"><span class="toc-text">过滤器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-text">IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FileInputStream-FileOutputStream"><span class="toc-text">FileInputStream &#x2F; FileOutputStream</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单独出来需要会的"><span class="toc-text">单独出来需要会的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comparator"><span class="toc-text">Comparator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作为了解知道就行的"><span class="toc-text">作为了解知道就行的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态导入"><span class="toc-text">静态导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数"><span class="toc-text">可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections-工具类"><span class="toc-text">Collections 工具类</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>笔记内容全部来源于<a href="https://www.bilibili.com/video/av17029959" target="_blank" rel="noopener">https://www.bilibili.com/video/av17029959</a></p>
+</blockquote>
+<h1 id="P4-集合和异常"><a href="#P4-集合和异常" class="headerlink" title="P4 集合和异常"></a>P4 集合和异常</h1><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><h3 id="基本的方法"><a href="#基本的方法" class="headerlink" title="基本的方法"></a>基本的方法</h3><p>演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到</p>
+<table>
+<thead>
+<tr>
+<th align="center">Method</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boolean add(E e)</td>
+<td align="center">之所以会返回boolean是为了服务Set的</td>
+</tr>
+<tr>
+<td align="center">boolean remove (Object o)</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">void clear()</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">boolean contains(Object o)</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">boolean isEmpty()</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">int size()</td>
+<td align="center">N/A</td>
+</tr>
+</tbody></table>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>这里多说一嘴吧，出现了知识盲区。</p>
+<p>像下面这样传进对象的话，实际上发生了父类引用指向子类对象。想用 Student[] 来接受是不可以的!!! 不用Collection用 ArrayList 来创建集合来存也不行，因为集合的 toArray 返回类型就定死在了 Object 类</p>
+<pre><code class="java">public static void main(String[] args) {
+    Collection coll = new ArrayList();
+    coll.add(new Student(&quot;张三&quot;, 23));    // Object obj = new Student(&quot;张三&quot;, 23);
+    coll.add(new Student(&quot;李四&quot;, 24));
+    coll.add(new Student(&quot;王五&quot;, 25));
+
+    Object[] arr = c.toArray();
+    for (int i = 0; i &lt; arr.length; i++) {
+        Student s = (Student)arr[i];    // 向下转型
+        System.out.println(s.getName() + &quot; ... &quot; + s.getAge);
+    }
+}
+</code></pre>
+<p>Java里有一个叫 Iterator 的类，迭代器，Collection下的类都含有 .iterator 的方法，会返回一个 Iterator。Iterator 含有 .hasNext() 和 .next() 方法，一个判断有误，有一个获取到下一个。</p>
+<p>这里需要注意一点!!! .next() 获取到的是一个 Object 对象，没办法直接调用里面的特有的方法。（除非用泛型）</p>
+<h3 id="三种迭代删除元素"><a href="#三种迭代删除元素" class="headerlink" title="三种迭代删除元素"></a>三种迭代删除元素</h3><p><strong>普通for循环：</strong></p>
+<pre><code class="java">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;c&quot;);
+list.add(&quot;d&quot;);
+
+for(int i = 0; i &lt; list.size(); i++) {
+    if(&quot;b&quot;.equals(list.get(i))) {
+        list.remove(i--);  // 这个 i-- 目的是为了保证还指同一个位置，因为删除一个之后是把后面的拼接过来的
+    }
+}</code></pre>
+<p><strong>Iterator：</strong></p>
+<pre><code class="java">// 创造list的过程省略
+Iterator&lt;String&gt; itr = list.iterator();
+while(it.hasNext()) {
+    if(&quot;b&quot;.equals(it.next())) {
+        //list.remove(&quot;b&quot;);  // 并发异常了
+        it.remove();
+    }
+}</code></pre>
+<p><strong>Enhanced for：</strong></p>
+<p>增强 for 循环只能遍历，不能删除。因为它底层用的是 Iterator 来实现的，所以当调用类自己的 remove 方法的时候，还是会出现并发异常。</p>
+<pre><code class="java">for (String str : list) {
+    if (&quot;b&quot;.equals(str)) {
+        list.remove(&quot;b&quot;);
+    }
+}</code></pre>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>又出现了一个只是盲区… List 中的 remove 方法是会返回一个 Object 对象的，换句话说就是可以接收到。（应该可以用来做一些奇怪的事）</p>
+<p>这里再多注意一件事，当 List 操作整数的时候，直接 remove 的话记得强转成Integer</p>
+<h3 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h3><p>当一个 List 调用 .iterator() 方法，得到一个迭代器的时候，如果在迭代的过程中对该 list 进行修改，会抛出 “ConcurrentModificationException” 的异常，具体原因和并发有关。</p>
+<pre><code class="java">List list = new ArrayList();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;World&quot;);
+list.add(&quot;c&quot;);
+list.add(&quot;d&quot;);
+
+Iterator itr = list.iterator();
+while(itr.hasNext()) {
+    String str = (String)itr.next();
+    if(&quot;World&quot;.equals(str)) {
+        list.add(&quot;javaEE&quot;);
+    }
+}
+// 以上代码执行就会抛出异常</code></pre>
+<p>所以如果想用迭代器得到每一个元素，同时还想对 List 进行修改的话，可以使用 List 特有的迭代器：ListIterator</p>
+<pre><code class="java">ListIterator litr = list.iterator();
+while(litr.hasNext()) {
+    String str = (String)litr.next();
+    if(&quot;World&quot;.equals(str)) {
+        litr.add(&quot;javaEE&quot;);  // 注意这里是在 World 之后插入一个 javaEE
+    }
+}
+
+// 它还能检查前一个 .hasPrevious() 也能获取到前一个 .previous() 很少用，作为了解。</code></pre>
+<h3 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h3><p>这里还是多说一嘴，容易被忽略。因为 .contains() 方法依赖的是 .equals()，所以注意要重写，下面以 Person 类举例。再多说一句，.remove() 方法也是依赖的 .equals() 方法，想移除自定义对象也需要重写。</p>
+<pre><code class="java">@Override
+public boolean equals(Object obj) {
+    Person p = (Person)obj;  // parameter用Object来接受会好一点
+    return this.name.equals(p.getName()) &amp;&amp; this.age == p.getAge();
+} </code></pre>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这里只写自己的盲区</p>
+<pre><code class="java">public class Tool&lt;Q&gt; {
+    private Q q;
+
+    public getObj() {
+        return q;
+    }
+
+    public setObj(Q q) {
+        this.q = q;
+    }
+
+    public&lt;T&gt; void show(T t) {
+        Stsrem.out.println(t);
+    }
+}</code></pre>
+<p>类名改变可以规定在创建对象的时候，传入的类型；同时有一点注意，单一的方法也可以拥有自己特有的泛型。比如这里的 show 方法，可以传给 show 的就不局限于Q。例如，我创建一个 Tool 的类，规定只能用 Student ，但是当我调用 show 方法的时候，就可以传入任意类型的数据，不局限于 Q。方法想有自己的泛型需要在方法的开头处声明。（一般来说方法的类型与类的泛型一样）</p>
+<p>再再再多说一个东西，以上针对的是非静态方法才这么说的，当一个方法是 static 的时候，注意声明泛型。静态方法可以在不创造实例对象的时候调用使用，不控制传参类型会存在安全隐患。</p>
+<p>格式：</p>
+<pre><code>public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</code></pre><h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><p>大概知道怎么用的就行了，回头细学的时候在来增加</p>
+<pre><code class="java">interface Inter&lt;T&gt; {
+    public void show(T t);
+}
+
+class Demo implements Inter&lt;Person&gt; {
+    @Override
+    public void show(Person p) {
+        System.out.println(t);
+    }
+}</code></pre>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>通配符就是一个问号 “?”</p>
+<pre><code class="java">ArrayList&lt;?&gt; list1 = new ArrayList&lt;Integer&gt;();</code></pre>
+<p>当引用指向的类型不确定时，可以在左面用通配符。</p>
+<p><strong>进阶用法：</strong></p>
+<p>Collection中有一个 addAll() 的方法，它API是这么写的：</p>
+<pre><code class="java">addAll(Collection&lt;? extends E&gt; e)</code></pre>
+<p>大概解释一句，往一个集合中添加的，首先必须都要是Collection下面的，而且传进来的集合中的元素，必须是和该集合中的元素是继承关系，或者一样。用下面代码举例说明。</p>
+<pre><code class="java">ArrayList&lt;Person&gt; list1 = new ArrayList&lt;&gt;();
+list1.add(new Person(&quot;张三&quot;, 23));
+list1.add(new Person(&quot;王五&quot;, 25));
+
+ArrayList&lt;Student&gt; list2 = new ArrayList&lt;&gt;();
+list2.add(new Student(&quot;赵六&quot;, 26));
+list2.add(new Studebt(&quot;郑七&quot;, 27));
+
+list1.addAll(list2);
+// list2.addAll(list1);  // 错误使用</code></pre>
+<h3 id="上下边界"><a href="#上下边界" class="headerlink" title="上下边界"></a>上下边界</h3><pre><code>Collection&lt;? extends E&gt; c
+Comparator&lt;? super E&gt; comparator</code></pre><p>区别：（个人理解，全以 TreeSet 举例）</p>
+<p>? super E ——–&gt;  TreeSet  &lt;——– ? extend E</p>
+<p>从广义的角度来说，创造一个类和一堆子类的时候，他们是一种继承关系，是 is-a 的关系。比如，定义一个 Animal 类，那么 Cat 也是 Animal，Dog 也是 Animal，所有的具体的动物的都是 Animal的子类。在对这些对象进行集体性的操作的时候，比如猫科归为一类，哺乳类归为一类，这样的 “归纳” 操作的时候，使用到的是 ? extends E，因为我们不需要考虑他们具体的属性是怎么样的，只需要考虑归属关系。<strong>所谓的上边界，是 ? 相对于 TreeSet 中的元素(E) 而言的，这个 E 就是最高层级，? 不可以比 E 的层级更高。</strong></p>
+<p>对于 ? super E 来说的话，它的存在是为了保证 ? 必须为 E 的父类，<strong>不可以为子类</strong>，以此来保证 ? 有的属性或者方法 E 也有，以此来确定通用性。比如在创造 Comparator 的时候，我想对 Student 对象进行排序，这时候创造 Comparator 的时候就要考虑，是创造一个泛型为 Student 的好，还是泛型为 Person 的好，很明显这个类的选择是层级越高越好。<strong>所以下边界是 E 对于 ? 而言的，说人话就是 E 是对于 ? 来说最低的层级了，? 不能比它还低。</strong></p>
+<p>所以冯老师所说的 “拿过来” 的意思是，一个 TreeSet 把另一个 TreeSet 添加第一个里面的时候，第一个 TreeSet 的元素就为上边界，第二个 TreeSet 中的元素都必须是第一个 TreeSet 中的元素的子类；</p>
+<p>而 “放进去” 的意思是说，当进行某种规定的时候，所传入的参数的泛型层级，需高于下边界，也就是 TreeSet 中的元素，以此来最大范围的保证此规则的有效性。</p>
+<h2 id="集合和数组互转"><a href="#集合和数组互转" class="headerlink" title="集合和数组互转"></a>集合和数组互转</h2><h3 id="数组转集合"><a href="#数组转集合" class="headerlink" title="数组转集合"></a>数组转集合</h3><pre><code class="java">String[] arr = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+List&lt;String&gt; list = Arrays.asList(arr);</code></pre>
+<p>这里 asList() 底层实际 return 的是 ArrayList ，即使尝试强转， 用 ArrayList 来接收，也是不被允许的，在源码多加了一个@SafeVarargs (Safe Variable Arguments)。Java 之所以这样做主要是为了保证数组的长度的不可变性，规定不允许进行额外增删操作，但是可以修改，以集合的思想来对数组进行一定的操作。</p>
+<h3 id="集合转数组"><a href="#集合转数组" class="headerlink" title="集合转数组"></a>集合转数组</h3><pre><code class="java">ArrayLisy&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;c&quot;);
+list.add(&quot;d&quot;);
+
+String[] arr = list.toArray(new String[10]);
+// 其输出位a b c d 和 6个null</code></pre>
+<p>如果开辟的数组大小比原集合大，则为以上情况，会跟着多余的几个null；反之则和原集合大小一致。</p>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><h3 id="存储自定义对象"><a href="#存储自定义对象" class="headerlink" title="存储自定义对象"></a>存储自定义对象</h3><p>每次往 Set 里添加新的元素的时候，都会算一个新的 Hash code 给这个对象，他们之间不冲突也就不会进行比较。如果 Set 中也想实现存储不重复对象的话，不但需要重写 equals 方法，还需要重写 hashCode 方法。</p>
+<p>比如我创建了一个一个 HashSet 里面存 Person 对象，就要重写 Person 类中的 hashCode 和 equals 方法，如果我固定了 hashCode 的返回值，那程序就会一次次的调用 equals 方法，去比较 name 和 age，这样的效率不够高。所以尽可能要保证，一个对象一个独有的 hashCode， 比如张三，23，就是固定了 hashCode 是一个数值，其他的人不管是李四，23，还是王五，25，都应该和张三，23的 hashCode 值不同，这样避免了多次调用 equals 方法，提高效率。</p>
+<p>实际开发中呢，用 IDE 自带的重写 hashCode 和 equals 方法就可以。</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png" alt=""></p>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>底层是链表实现的，是 Set 集合中唯一一个能做到怎么存就怎么取的集合对象。因为是 HashSet 的子类，所以保证了元素的唯一性，与 HashSet 的原理一样</p>
+<h2 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h2><p>TreeSet 用来对元素进行排序的，同时也可以保证元素的唯一性</p>
+<h3 id="存储自定义对象-1"><a href="#存储自定义对象-1" class="headerlink" title="存储自定义对象"></a>存储自定义对象</h3><p>TreeSet 之所以可以排序，肯定是比较什么之后才可以做到的。如果里面想存自定义对象的话，要注意给该类实现一个 <strong>Comparable 接口</strong>。</p>
+<h3 id="Comparator的巧用"><a href="#Comparator的巧用" class="headerlink" title="Comparator的巧用"></a>Comparator的巧用</h3><p>在创造 TreeSet 对象的时候，可以通过创造匿名内部类的方法来实现排序规则，原本是要再外部创造一个类然后重写compare方法，代码大概实现思路如下：</p>
+<pre><code class="java">// 对一个 List 进行排序，要求可以有重复元素
+public static void sort(List&lt;String&gt; list) {
+    TreeSet&lt;String&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;String&gt;() {
+        @Override
+        public int compare(String s1, String s2) {
+            int num = s1.compareTo(s2);
+            return num == 0 ? 1 : num;  // 这里不返回 0 主要是为了保留重复元素
+        }
+    });
+    ts.addAll(list);
+    list.clear();
+    list.addAll(ts);
+}</code></pre>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="Map-和-Set-的关系"><a href="#Map-和-Set-的关系" class="headerlink" title="Map 和 Set 的关系"></a>Map 和 Set 的关系</h3><p>无论是 TreeMap 还是 HashSet ，他们都是以 Key 为基础算 Hash 或者 排序的；HashSet 和 TreeSet / HashMap 和 TreeMap 他们都是用的 Hash 和 二叉树，算法书写没必要写两次，实际用一套算法互相调用即可。底层上 Set 是 依赖 Map 实现的。Map 是一个双列集合，当 Set 调用 put 方法的时候，会在 Key 的位置添加所需要添加的元素，然后再 Value 的位置添加一个名为 PRESENT 的空 Object 对象，隐藏 Value。</p>
+<h3 id="put-和-remove-方法"><a href="#put-和-remove-方法" class="headerlink" title="put 和 remove 方法"></a>put 和 remove 方法</h3><p>Map中put相同的 Key 的时候保留，但是 Value 是覆盖。put 方法是有返回值的，返回的是 V，这个 V 是被覆盖的值，以代码来举例：</p>
+<pre><code class="java">Map&lt;String, Integer&gt; m = new HashMap&lt;&gt;();
+Integer i1 = map.put(&quot;张三&quot;, 23);  // 这里的 i1 是个null，刚初始化 map 对象的时候，K和V都是null
+Integer i2 = map.put(&quot;张三&quot;, 25);  // 这里的 i2 是之前的23，把23覆盖掉了</code></pre>
+<p>remove 方法，根据 Key 来移除一对数据，同时返回 Value 值</p>
+<h2 id="Map-的迭代"><a href="#Map-的迭代" class="headerlink" title="Map 的迭代"></a>Map 的迭代</h2><ol>
+<li><p>利用 KeySet 方法得到，它会返回一个存有全部 Key 的Set，之后用 Iterator 或者 for 循环之类的都可</p>
+<p>这里多说一句，可以用 enhanced for loop来让代码很好看：</p>
+<pre><code class="java">for (String key : map.KeySet()) {
+    System.out.println(key))
+}</code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用键值对对象，把这个双列集合的对象作为一个单列集合存在。使用 entryset 方法可以得到</p>
+<pre><code class="java">Set&lt;Map.Entery&lt;String, Integer&gt;&gt;  es = map.entryset();</code></pre>
+<p>这里也可以使用 enhanced for loop 来得到没一个键值对</p>
+</li>
+</ol>
+<h3 id="Map-存自定义对象"><a href="#Map-存自定义对象" class="headerlink" title="Map 存自定义对象"></a>Map 存自定义对象</h3><p>存自定义对象的时候，同样和 HashSet 那面的情况一样，也需要重写 equals 和 hashCode 方法，重写之后才能保证在添加元素进 Map 的时候，Key 值唯一</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>地层是 HashTable 实现，同时有满足链表结构的 Map。有前后顺序，其他的和正常Map的使用一样。</p>
+<h3 id="HashMap-和-Hashtable-的区别"><a href="#HashMap-和-Hashtable-的区别" class="headerlink" title="HashMap 和 Hashtable 的区别"></a>HashMap 和 Hashtable 的区别</h3><p>共同点：地层都是哈希算法，而且都是双列集合</p>
+<p>区别：</p>
+<ol>
+<li><p>HashMap 是线程不安全的，效率高，JDK1.2 版本开始出现</p>
+<p>Hashtable是现成安全的，效率低，JDK1.0 版本的</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>HashMap 可以存 null 键和 null 值</p>
+<p>Hashtable 不可以</p>
+</li>
+</ol>
+<h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><p>Throwable 下有两个子类，一个是 Error 另一个是 Exception。一般 Error 都是一些致命报错，比如服务器崩溃等。Exception 这里暂时重点讲的是 RuntimeException，即运行时异常。这样的异常大多数都是由程序员自身的操作失误而导致的，需要回头修改代码。</p>
+<h3 id="Try…-Catch-使用"><a href="#Try…-Catch-使用" class="headerlink" title="Try… Catch 使用"></a>Try… Catch 使用</h3><p>说使用之前先区别一下客户端（安卓）开发和服务端（EE）开发中，使用的差别。</p>
+<p>安卓中的实际开发，一般直接一个 try{} catch (Exception e) {} 一次直接全捕获到就完事了。</p>
+<p>服务端开发中，是要从底层一层层向上抛出，记录下来的，这样有助于记录和维护。</p>
+<p>Try… Catch，在 Try 中，它会检测有没有某一个具体的异常对线产生，如果有的话，就会让 Catch给捕获过去。让 catch 中的那个 e 给接过去了。</p>
+<pre><code class="java">public static void main(String[] args) {
+    try {
+        // code ///
+    }
+    catch (Exception e) {
+        // code //
+    }
+}</code></pre>
+<p>Try… Catch 是有先后顺序的，如果 Catch 的异常顺序像上述这样，它不管什么样的异常都会直接接过去，从而没办法确定具体的异常类型。所以，如果为了更好的维护和记录的话，要遵循<strong>越详细的前面越笼统的放外面</strong>，这是基于多态的。</p>
+<h3 id="编译时异常"><a href="#编译时异常" class="headerlink" title="编译时异常"></a>编译时异常</h3><pre><code class="java">public static void main(String[] args) {
+    try {
+        FileInputStream fis = new FileInputStream(&quot;XXX.txt&quot;);
+    } catch (Exception e) {
+    }
+}</code></pre>
+<p>以上就是在编译时会产生的错误，那个 XXX.txt 如果不存在的话就会抛出异常，在编译之前就要去修改。但是如果有需要这样写的话，就需要用 try 来处理。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>getMessage(): 获取到异常信息，返回 String</li>
+<li>toString(): 获取异常类名和异常信息，返回字符串</li>
+<li>printStackTrace(): 获取异常类名和异常信息，以及异常出现在程序中的位置，返回为void</li>
+</ol>
+<h3 id="throw的用法"><a href="#throw的用法" class="headerlink" title="throw的用法"></a>throw的用法</h3><p>Java 中的 throw 其实和 Python 里的 raise 用法一样，直接 throw + 异常对象即可</p>
+<pre><code class="java">throw new Exception(&quot;XXX&quot;);</code></pre>
+<p>需要注意的是，如果抛出的异常是一个 RuntimeException 的话，在方法上是不需要加写 throws 关键字的。很好理解，如果直接抛出 Exception 的话，这里包含了编译时异常和运行时异常，如果不缩小到运行时异常的话，那我们的代码也需要顾全编译时异常。</p>
+<p>所以编译时异常的抛出是必须要对其进行处理的，但是运行异常的抛出可以处理也可以不处理。</p>
+<h3 id="throw-和-throws"><a href="#throw-和-throws" class="headerlink" title="throw 和 throws"></a>throw 和 throws</h3><p>throws:</p>
+<ol>
+<li>跟在方法声明后面</li>
+<li>可以跟多个异常类名且用逗号隔开</li>
+<li>表示抛出异常，由该方法的调用者来处理</li>
+</ol>
+<p>throw:</p>
+<ol>
+<li>用在方法内，后面跟的是一个异常对象</li>
+<li>只能抛出一个异常对象</li>
+<li>表示抛出异常，由方法体内的语句处理</li>
+</ol>
+<h3 id="finally-用法"><a href="#finally-用法" class="headerlink" title="finally 用法"></a>finally 用法</h3><p>它的存在是为了释放资源，在 IO 流操作和数据库操作中会见到，被 finally 控制的语句体一定会执行，除非在执行到 finally 语句之前 JVM 就退出了。</p>
+<pre><code class="java">public static void main(String[] args) {
+    try {
+        // code //
+    } catch (Exception e) {
+        return 0;
+    } finally {
+        // execution //
+    }
+}</code></pre>
+<p>这里，无论 catch 中的代码执行还是没执行，finally 里的语句都会执行，就算在 catch 里有 return 语句。</p>
+<h3 id="finally详解"><a href="#finally详解" class="headerlink" title="finally详解"></a>finally详解</h3><p>finally 比正常想的要复杂的多，地层 JVM 的处理方式比较特殊，直接上代码</p>
+<pre><code class="java">class Test {
+    public static void main(String[] args) {
+        System.out.println(getValue());
+    }
+
+    public static int getValue() {
+        int i = 1;
+        try {
+            i++;
+            return i;
+        } finally {
+            i += 50;
+        }
+    }
+}</code></pre>
+<p>首先要明白的是，finally 的代码块的执行时间，是在 JVM 执行 ireturn 之前的，也就是说，return i 不是马上执行，而是在执行完 i += 50 之后才把 i 的值返回给 main 函数中的调用者的。它会在 try 中执行 i++ 之后，把 i 的值存在 Local Variable Table 的一个位置（似乎是最后一位？）然后再返回，具体字节码文件如下，已附详细注释。</p>
+<pre><code class="java">public static int getValue();
+    descriptor: ()I  // 数据类型
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC  // Access 修饰符类型
+    Code:
+      stack=1, locals=3, args_size=0
+         0: iconst_1  // line 7: 产生一个值为 1 的数
+         1: istore_0  // 存在 Local Variable Array 的 index 为 0 的位置
+         2: iinc          0, 1  // line 9: 把 i + 1 执行
+         5: iload_0    // line 10: 要执行 return 之前先读取 index 为 0 的这个值
+         6: istore_1    // 之后存在 Array 的 index 为 1 的位置
+         7: iinc          0, 50  // 此时 i += 50 是对 Array 里 index 为 0 的那个 2 进行增加的
+        10: iload_1  // 再次读取 index 为 1 的值
+        11: ireturn  // 把读取到的值 return 
+        12: astore_2  // 可能是产生一个对应的 Exception 对象然后把 reference 存进去？
+        13: iinc          0, 50  // 只要期间发生异常，还没有 catch 的情况，执行 finally 代码块
+        16: aload_2  // 把这个 Exception 对象的引用读取到
+        17: athrow  // 把异常对象抛出
+      Exception table:
+         from    to  target type
+             2     7    12   any  // 此处含义为从 2 - 7 步中只要出现异常，则跳转到12
+      LineNumberTable:  // 这个 table 是原 .java 的源码行数对应这里的关键操作行数
+        line 7: 0
+        line 9: 2
+        line 10: 5
+        line 12: 7
+        line 10: 10
+        line 12: 12
+        line 13: 16
+      StackMapTable: number_of_entries = 1
+        frame_type = 255 /* full_frame */
+          offset_delta = 12
+          locals = [ int ]
+          stack = [ class java/lang/Throwable ]</code></pre>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p>继承 Exception / RuntimeException 就行，记得重写一些必要的方法。这个在开发中，很重要，对异常处理的越规范，排查错误的时候就越轻松。</p>
+<h3 id="异常练习"><a href="#异常练习" class="headerlink" title="异常练习"></a>异常练习</h3><p>这里通过一个很巧妙的方法来判断输入的非法类型，可以作为案例学习一下</p>
+<pre><code class="java">public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println(&quot;输入一个整数：&quot;);
+    while (true) {
+        String line = sc.nextLine();
+        try {
+            int num = Integer.parseInt(line);
+            System.out.println(Integer.toBinaryString(num));
+            break;
+        } catch (Exception e) {
+            try {
+                new BigInteger(line);
+                System.out.println(&quot;录入错误，输入了一个过大的整数，重新输入：&quot;);
+            } catch (Exception 2) {
+                try {
+                    new BigDecimal(line);
+                    System.out.println(&quot;录入错误，输入了一个小数，重新输入：&quot;)
+                } catch (Exception e3) {
+                    System.out.println(&quot;录入错误，输入了字符，重新输入：&quot;)
+                }
+            }
+        }
+    }
+}</code></pre>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>主要有三种方法</p>
+<pre><code class="java">File(String pathname);
+File(String parent, String child);
+File(File parent, String child);</code></pre>
+<p>parent 指的是一个目录，child 就是相对 parent 的文件名。第三个构造函数，把 parent 进行一次封装，这样相对来说比 String 形式的路径会更强大一些</p>
+<h3 id="创建文件-夹"><a href="#创建文件-夹" class="headerlink" title="创建文件/夹"></a>创建文件/夹</h3><p>又是一些简单的操作…</p>
+<pre><code class="java">public boolean createNewFile();
+public boolean mkdir();
+public boolean mkdirs();</code></pre>
+<p>上面多说一下，mkdirs 是创建多级目录用的，具体格式如下</p>
+<pre><code class="java">File dir = new File(&quot;home\\pictures\\2018&quot;);
+dir.mkdirs();  // 在当前目录下创建这样一个多级目录</code></pre>
+<h3 id="改名-路径和删除"><a href="#改名-路径和删除" class="headerlink" title="改名/路径和删除"></a>改名/路径和删除</h3><p>改名/路径，使用 renameTo 方法</p>
+<pre><code class="java">// public boolean renameTo(File dest);
+File f1 = new File(&quot;xxx.txt&quot;);
+File f2 = new File(&quot;ooo.txt&quot;);
+f1.renameTo(f2);
+
+// 改名并剪切过去
+File f3 = new File(&quot;yyy.txt&quot;);
+File f4 = new File(&quot;D:\\zzz.txt&quot;);</code></pre>
+<p>删除文件或文件夹，Java 删除不走回收站，而且要注意，如果删除文件夹的话，需要保证其为空文件夹</p>
+<pre><code class="java">File file3 = new File(&quot;test.txt&quot;);
+file3.delet();</code></pre>
+<h3 id="判断功能"><a href="#判断功能" class="headerlink" title="判断功能"></a>判断功能</h3><p>直接贴图</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200516214932.png" alt=""></p>
+<p>注意事项：</p>
+<ol>
+<li>Windows 下认为所有文件都可读</li>
+<li>Windows 下可以设为不可写</li>
+</ol>
+<h3 id="获取功能"><a href="#获取功能" class="headerlink" title="获取功能"></a>获取功能</h3><pre><code class="java">public String[] list();  // 获取到指定目录下所有的文件或者文件夹的名字
+public File[] listFiles();  // 获取指定目录下的所有文件或文件夹File数组</code></pre>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>这是一个借口，调用 file.list() 的时候可以传入匿名对象，规定过滤规则</p>
+<pre><code class="java">String arr = dir.list(new FilenameFilter() {
+    @Override
+    public boolean accept(File dir, String name) {
+        File file = new File(dir, name);
+        return file.isFile() &amp;&amp; file.getName().endWith(&quot;.jpg&quot;);
+    }
+});</code></pre>
+<p>附上源码：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519223858.png" alt=""></p>
+<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><p>简单概述</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519230216.png" alt=""></p>
+<p>这四个都是最顶的抽象父类，往下的话以后缀进行判断。什么什么 Stream 就是字节流，什么什么Reader 或者什么什么 Writer 就是字符流。</p>
+<h3 id="FileInputStream-FileOutputStream"><a href="#FileInputStream-FileOutputStream" class="headerlink" title="FileInputStream / FileOutputStream"></a>FileInputStream / FileOutputStream</h3><p>基础方面注意两点</p>
+<ol>
+<li>在使用 fos.write() 的时候，如果不在 constructor 的第二个参给 true 的话就是表示清空重写的操作</li>
+<li>fis.read() 读到最后结尾返回的是 -1 可以作为终止标识</li>
+<li>文件很大的时候直接 read 然后直接 write 效率会很低</li>
+</ol>
+<p>相对高效一点的拷贝方式：</p>
+<pre><code class="java">FileInputStream fis = new FileInputStream(&quot;AAA.mp3&quot;);
+FileOutputStream fos = new FileOutpurStream(&quot;copy.mp3&quot;);
+
+byte[] arr = new byte[fis.available()];
+fis.read(arr);
+fos.write(arr);
+fis.close();
+fos.close();
+// 不过实际开发中这个也不是推荐使用，因为当拷贝比较大的文件的时候，内存可能吃不住这么大的文件</code></pre>
+<p><strong>第三种拷贝方式：</strong></p>
+<pre><code class="java">FileInputStream fis = new FileInputStream(&quot;xxx.txt&quot;);
+        FileOutputStream fos = new FileOutputStream(&quot;copy.txt&quot;);
+        byte[] arr = new byte[4];
+        int len;
+        while ((len = fis.read(arr)) != -1) {
+            fos.write(arr, 0, len);  //  write(arr, off, count)
+        }
+
+        fis.close();
+        fos.close();</code></pre>
+<p>这里就是把一个文件分好几段来读：</p>
+<p>len 代表本次读到的有效字节个数，而下面 write 方法中有三个变量，第一个 arr 是刚才读到的那一段内容，比如我规定了 byte 数组大小是 4，读到了 abcd ，然后在 write 中，arr 的内容就是 abcd ，之后第二个参数 off 是表从第几个开始写入，如果是 0，那就代表从 a 开始往后拷贝，如果是 1，那就是从 b 开始往后拷贝，然后第三个参数表示拷贝多少个过去，如果是按照示例代码里的意思是，把这一个 arr 内的全部都拷贝过去，如果改成了 3 ，那就拷贝 3 个过去，这里注意别越界了。</p>
+<p>注意一点：那个 byte[] 的大小，里面一般用 1024 的整数倍</p>
+<h2 id="单独出来需要会的"><a href="#单独出来需要会的" class="headerlink" title="单独出来需要会的"></a>单独出来需要会的</h2><h3 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h3><p>一个接口，自己可以规定怎么比较两个对象的规则，一般通过一个类实现这个接口后，把这个类的实例化对象传入作为参数，一般在创造集合的时候可以使用，比如 TreeSet</p>
+<p>举例用法：</p>
+<pre><code class="java">class ComapreByLen implements Comparator&lt;String&gt; {
+    @Override
+    public int compare(String s1, String s2) {
+        int num = s1.length() - s2.length();    // 先主要比较长度
+        return num == 0 ? s1.compareTo(s2) : num ;    // 后比较内容
+    }
+}
+
+class Myclass {
+    public static void main(String[] args) {
+        TreeSet&lt;String&gt; ts = new TreeSet&lt;&gt;(new CompareByLen());
+        // 传进的 String 就会按照上面定义的规则进行排序
+    } 
+}</code></pre>
+<h2 id="作为了解知道就行的"><a href="#作为了解知道就行的" class="headerlink" title="作为了解知道就行的"></a>作为了解知道就行的</h2><h3 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h3><pre><code class="java">import static java.until.Arrays.sort;</code></pre>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><pre><code class="java">public static void print(int ... arr) {
+    for (int i = 0; i &lt; arr.length; i++) {
+        System.out.println(arr[i]);
+    }
+}</code></pre>
+<p>这个主要是用在不知道定义多少个参数的时候，而且要放在最后一个参数来使用。</p>
+<p>举例：Arrays里有一个方法是这么写的</p>
+<pre><code class="java">static&lt;T&gt; List&lt;T&gt; asList(T ... a)</code></pre>
+<h3 id="Collections-工具类"><a href="#Collections-工具类" class="headerlink" title="Collections 工具类"></a>Collections 工具类</h3><p>方法和 Arrays 工具类的使用方法一样</p>
+<p>排序：</p>
+<pre><code class="java">public static &lt;T&gt; void sort(List&lt;T&gt; list)</code></pre>
+<p>二分查找法：</p>
+<pre><code class="java">public static &lt;T&gt; int binarySearch(List&lt;?&gt; list, T key)</code></pre>
+<p>找最大值：</p>
+<pre><code class="java">public static &lt;T&gt; T max(Collections&lt;?&gt; coll)</code></pre>
+<p>反转：</p>
+<pre><code class="java">public static void reverse(List&lt;?&gt; list)</code></pre>
+<p>随机打乱：</p>
+<pre><code class="java">public static void shuffle(List&lt;?&gt; list)</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+
+<script src="/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        id: 'http://yoursite.com/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/', // 可选。默认为 location.href
+        owner: 'BlckKn1fe',
+        repo: 'gitment-saving',
+        oauth: {
+            client_id: '3944833dd841590cab30',
+            client_secret: '3466e3197bcf0b5fa92589bef7a2279eb706913c',
+        },
+    })
+    gitment.render('comments')
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2019-2020 黑刀</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 542px;
+        }
+        .nav.fullscreen {
+            margin-left: -542px;
+        }
+        .nav-left {
+            width: 150px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 542px;
+            margin-left: -542px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 542px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

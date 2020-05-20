@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Java Note P1 (黑马程序员) | 黑刀的个人墨客</title>
+  <meta name="keywords" content=" Java , Note ">
+  <meta name="description" content="Java Note P1 (黑马程序员) | 黑刀的个人墨客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Note P4 黑马程序员">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/index.html">
+<meta property="og:site_name" content="黑刀的个人墨客">
+<meta property="og:description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200516214932.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519223858.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519230216.png">
+<meta property="article:published_time" content="2020-03-05T09:40:06.000Z">
+<meta property="article:modified_time" content="2020-05-20T10:45:34.955Z">
+<meta property="article:author" content="黑刀">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.0.1" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>黑刀</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/BlckKn1fe" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lding1003@gmail.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=553658519&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=121733025" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="All">All<small>(5)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Java">Java<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Life">Life<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">Friends</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://flowermushroom.github.io">花蘑菇</a></li>
+            
+            <li><a target="_blank" href="https://www.yeliulee.com/">琉璃</a></li>
+            
+            <li><a target="_blank" href="https://www.cnblogs.com/nightrainlemon">夜雨柠檬</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Note</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All Java "
+           href="/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P4 黑马程序员">Java Note P4 黑马程序员</span>
+            <span class="post-date" title="2020-03-05 17:40:06">2020/03/05</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/11/18/Java-Note-P3-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P3 (黑马程序员)">Java Note P3 (黑马程序员)</span>
+            <span class="post-date" title="2019-11-18 12:43:23">2019/11/18</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/15/Java-Note-P2-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P2 (黑马程序员）">Java Note P2 (黑马程序员）</span>
+            <span class="post-date" title="2019-10-15 23:39:14">2019/10/15</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/09/Java-Note-P1-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P1 (黑马程序员)">Java Note P1 (黑马程序员)</span>
+            <span class="post-date" title="2019-10-09 00:33:50">2019/10/09</span>
+        </a>
+        
+        <a  class="All Life "
+           href="/2019/10/04/%E6%B2%A1%E6%83%B3%E5%88%B0%E6%88%91%E4%B9%9F%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="没想到我也二十二了">没想到我也二十二了</span>
+            <span class="post-date" title="2019-10-04 00:16:35">2019/10/04</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Java-Note-P1-黑马程序员" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Java Note P1 (黑马程序员)</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+            <a class="color5">Note</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-05-20 18:45:20'>2019-10-09 00:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-Java基础笔记"><span class="toc-text">P1 Java基础笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#P35-Data-type"><span class="toc-text">P35 Data type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P35-变量声明注意事项"><span class="toc-text">P35 变量声明注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P36-Data-Conversion"><span class="toc-text">P36 Data Conversion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P37-强制转换"><span class="toc-text">P37 强制转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P41-Float-和-Long类型的范围"><span class="toc-text">P41 Float 和 Long类型的范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P42-字符和字符串的运算"><span class="toc-text">P42 字符和字符串的运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P43-Char数据类型"><span class="toc-text">P43 Char数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P44-运算符"><span class="toc-text">P44 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算数运算符"><span class="toc-text">算数运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三元运算符"><span class="toc-text">三元运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P57-输入（Int）"><span class="toc-text">P57 输入（Int）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P60-顺序结构"><span class="toc-text">P60 顺序结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#顺序结构"><span class="toc-text">顺序结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if语句结构"><span class="toc-text">if语句结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结构1：-if"><span class="toc-text">结构1： if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#——2019-10-09——"><span class="toc-text">——2019&#x2F;10&#x2F;09——</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构2：-if-else"><span class="toc-text">结构2： if&#x2F;else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结构3：-if-else-if-else"><span class="toc-text">结构3： if&#x2F;else if&#x2F; else</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P68-Switch用法"><span class="toc-text">P68 Switch用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#格式"><span class="toc-text">格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表达式接收类型"><span class="toc-text">表达式接收类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例"><span class="toc-text">举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#穿透的实例应用"><span class="toc-text">穿透的实例应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#循环"><span class="toc-text">循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P91-Method方法"><span class="toc-text">P91 Method方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P100-数组"><span class="toc-text">P100 数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java内存分配以及栈（stack）和堆（heap）的区别"><span class="toc-text">Java内存分配以及栈（stack）和堆（heap）的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P106-数组（Array）的一些操作"><span class="toc-text">P106 数组（Array）的一些操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取数组中的最大值最小值"><span class="toc-text">获取数组中的最大值最小值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反转"><span class="toc-text">反转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找特定元素的index"><span class="toc-text">查找特定元素的index</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P111-二维数组"><span class="toc-text">P111 二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传参的那些小事情（stack-heap）"><span class="toc-text">传参的那些小事情（stack&#x2F;heap）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Case-1"><span class="toc-text">Case 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Case-2"><span class="toc-text">Case 2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2019-10-15"><span class="toc-text">2019&#x2F;10&#x2F;15</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>笔记内容全部来源于<a href="https://www.bilibili.com/video/av16160477" target="_blank" rel="noopener">https://www.bilibili.com/video/av16160477</a></p>
+</blockquote>
+<h1 id="P1-Java基础笔记"><a href="#P1-Java基础笔记" class="headerlink" title="P1 Java基础笔记"></a>P1 Java基础笔记</h1><p>自用的一些笔记，P35之前都是一些用处不大，没必要进行记录的部分，坚持每周一次内容更新。以下所有记录的都是个人认为有必要注意，了解透彻的部分，如有错误还望读者及时指出、批评。</p>
+<p>2019年10月9日凌晨创</p>
+<h2 id="P35-Data-type"><a href="#P35-Data-type" class="headerlink" title="P35 Data type"></a>P35 Data type</h2><pre><code class="Java">byte b = 10;
+short s = 20;
+int i = 30;
+long x = 8888888L;
+/*
+ *byte占一个字节 -128 - 127
+ *short 2 bytes
+ *int 4 bytes
+ *long的话要在最后用 L 声明  8 bytes
+ *不用小写小写L因为小写L很像数字一
+ */
+
+//浮点类型
+float f = 12.3; // 4 bytes
+double d = 33.4; // 8 bytes 默认数据类型
+//float要末尾加F或者f 否则会把数字12.3看成double类型，大数据类型装进小数据类型中，损失精度
+
+//字符类型 2 bytes
+char c = &quot;1&quot;;
+
+//布尔类型 1 bit
+boolean b1 = true;
+boolean b2 = false;
+
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200223235128.png" alt=""></p>
+<h2 id="P35-变量声明注意事项"><a href="#P35-变量声明注意事项" class="headerlink" title="P35 变量声明注意事项"></a>P35 变量声明注意事项</h2><p>声明变量之后，如果要使用的话，一定要先赋值。</p>
+<pre><code class="java">int a;  // 这里只是declare了但是没assign value
+System.out.println(a);
+//会报错
+//但是输出去掉的话就不会</code></pre>
+<h2 id="P36-Data-Conversion"><a href="#P36-Data-Conversion" class="headerlink" title="P36 Data Conversion"></a>P36 Data Conversion</h2><pre><code class="java">//隐式转换
+
+int x = 3;
+byte b = 4;
+
+x = x + b;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20190925025740.png" alt=""></p>
+<p>这里会先把byte类型转成int类型（在计算机底层）</p>
+<h2 id="P37-强制转换"><a href="#P37-强制转换" class="headerlink" title="P37 强制转换"></a>P37 强制转换</h2><pre><code class="java">int x = 3;
+byte b = 4;
+b = (byte)(x + b); //这里是大的（int）往小的（byte）里装</code></pre>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20190925232245.png" alt=""></p>
+<pre><code class="java">/* ### 注意事项 1 ###
+ * 如果出现赋值超出数据类型最大限度
+ * 还要进行强制转换的话会出现结果
+ * 与预期不相同
+ */
+
+//00000000 00000000 00000000 10000010
+//10000010  -126补码  （-1求反码）
+//11111110  -126源码
+
+byte b = (byte)(126 + 4);
+
+//输出的结果为-126
+
+
+/* ### 注意事项 2 ###
+ * 变量相加和常量相加结果不一样
+ * 变量相加会直接转换成int类型
+ * 常量不变
+ */
+
+byte b1 = 3;
+byte b2 = 4;
+byte b3 = b1 + b2; //变量相加
+//会报错 因为b1+b2已经上升到int层面
+//从新赋值给b1会报错
+
+byte b4 = 3 + 4; //java编译器自带常量优化机制，他会检测3+4在不在byte类型的取值范围</code></pre>
+<h2 id="P41-Float-和-Long类型的范围"><a href="#P41-Float-和-Long类型的范围" class="headerlink" title="P41 Float 和 Long类型的范围"></a>P41 Float 和 Long类型的范围</h2><pre><code class="java">float f = 12.3f;
+long x = 12345;
+
+f = x; //隐式转换 （装得下）
+
+x = (long)f; //强制转换（砍掉小数点之后）</code></pre>
+<p>解答：</p>
+<p>float占4个字节</p>
+<p>32个二进制位</p>
+<p>1个位代表符号位</p>
+<p>8个位代表指数位（2的指数位）</p>
+<blockquote>
+<p>00000000 - 11111111</p>
+<p>0 -255</p>
+<p>IEEE754</p>
+<p>0代表0</p>
+<p>255代表无穷大</p>
+<p>剩下1 - 254</p>
+<p>规定还要回减127</p>
+<p>-126 - 127</p>
+<p>（Long最大值是2^63 - 1）</p>
+</blockquote>
+<p>23个位代表尾数位</p>
+<h2 id="P42-字符和字符串的运算"><a href="#P42-字符和字符串的运算" class="headerlink" title="P42 字符和字符串的运算"></a>P42 字符和字符串的运算</h2><pre><code class="java">System.out.println(&#39;a&#39; + 1);
+//输出结果为98
+System.out.println(char(&#39;a&#39; + 1));
+//输出结果为b
+
+System.out.println(&quot;hello&quot; + &#39;a&#39; + 1);
+//helloa1
+System.out.println(&#39;a&#39; + 1 + &quot;hello&quot;);
+//98hello
+
+//与字符串用加号连接的数据类型之后都会产生一串新的字符串
+
+</code></pre>
+<h2 id="P43-Char数据类型"><a href="#P43-Char数据类型" class="headerlink" title="P43 Char数据类型"></a>P43 Char数据类型</h2><p>char的取值范围是 0 - 65535</p>
+<p>char类型可以存储中文，因为java使用Unicode编码，char占两个字节，中文也是2个字节（一个char只能存一个中文）</p>
+<h2 id="P44-运算符"><a href="#P44-运算符" class="headerlink" title="P44 运算符"></a>P44 运算符</h2><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><pre><code class="java">// &amp;, |, ^, !
+
+//5 &lt; x &lt; 15不能再java中运行
+//可以写成以下形式
+//&amp; : and
+//| ：or
+x &gt; 5 &amp; x &lt; 15;
+
+//^ : exclusive
+</code></pre>
+<p>&amp; 和 &amp;&amp; 的区别：&amp;&amp;具有短路效果，左面如果是false则右边不执行</p>
+<p>| 和 || 的区别：||也具有短路效果，左面如果是true则右边不执行</p>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><p>++或–的使用注意事项：</p>
+<p>a++ 和 ++a独立使用效果一样</p>
+<p>但是涉及到赋值的时候或者运算的时候：</p>
+<p>a++ 是当前a的值拿出去运算或者赋值，之后在进行自身+1的操作</p>
+<p>++a 是先进行自身+1的操作然后再参与运算或赋值</p>
+<pre><code class="java">//第一题
+int x = 4;
+int y = (x++) + (++x) + (x*10)；
+//结果为70  （4 + 6 +60）
+
+//第二题 问哪句会报错
+byte b = 10;
+b++; // b = (byte)(b + 1)
+     //系统底层会进行这样的操作
+b = b + 1;
+//报错
+//b + 1 虽然会提升为int进行相加
+//但是b是byte 得到的结果是int 损失精度
+</code></pre>
+<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><pre><code class="java">int x = 10;
+int y = 5;
+int z;
+z = (x &gt; y) ? x : y;
+/* 如果x &gt; y为true x的值赋给z
+ * 反之y赋给z
+ */
+</code></pre>
+<p>案例：</p>
+<pre><code class="java">int a = 10;
+int b = 20;
+int c = 30;
+//先比较任意两个数的大小，取大的
+
+int temp = (a &gt; b) ? a : b;
+//用取得的大值和第三个比较
+int max = (temp &gt; c) ? temp : c;
+System.out.println(&quot;max =&quot; + max);
+
+</code></pre>
+<blockquote>
+<p><em>以上为各种运算符的一个combination，有一些没加的默认成废话</em></p>
+</blockquote>
+<h2 id="P57-输入（Int）"><a href="#P57-输入（Int）" class="headerlink" title="P57 输入（Int）"></a>P57 输入（Int）</h2><pre><code class="java">//录入一个整数
+import java.util.Scanner;
+
+Class Demo2_Scanner {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入一个整数：&quot;);
+        int x = sc.nextInt();
+    }
+}
+</code></pre>
+<pre><code class="java">//两个
+import java.util.Scanner;
+
+Class Demo2_Scanner {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入第一个整数：&quot;);
+        int x = sc.nextInt();
+        System.out.println(&quot;请输入第二个整数：&quot;);
+        int y = sc.nextInt();
+    }
+}
+</code></pre>
+<h2 id="P60-顺序结构"><a href="#P60-顺序结构" class="headerlink" title="P60 顺序结构"></a>P60 顺序结构</h2><h3 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h3><p>从上往下（Sequence）（废话…）</p>
+<h3 id="if语句结构"><a href="#if语句结构" class="headerlink" title="if语句结构"></a>if语句结构</h3><h4 id="结构1：-if"><a href="#结构1：-if" class="headerlink" title="结构1： if"></a>结构1： if</h4><p>注意事项：</p>
+<ul>
+<li><p>条件语句的结果必须是boolean类型？</p>
+</li>
+<li><p>如果 if 语句控制的语句体是简单的一条语句，可以省略大括号（非常不建议!!!）</p>
+<p>举例说明：</p>
+</li>
+</ul>
+<pre><code class="java">      int age = 17;
+    if (age &gt;= 18 &amp;&amp; age &lt;= 60) {
+        int x = 10;
+    }
+  /*
+   * 以上这个操作就会报错
+   * 因为int x = 10是两句话
+   * 第一句是 int x; 声明
+   * 第二句是x = 10; 赋值
+   */</code></pre>
+<h4 id="——2019-10-09——"><a href="#——2019-10-09——" class="headerlink" title="——2019/10/09——"></a>——2019/10/09——</h4><h4 id="结构2：-if-else"><a href="#结构2：-if-else" class="headerlink" title="结构2： if/else"></a>结构2： if/else</h4><p>好像也没什么要说的</p>
+<h4 id="结构3：-if-else-if-else"><a href="#结构3：-if-else-if-else" class="headerlink" title="结构3： if/else if/ else"></a>结构3： if/else if/ else</h4><p>也没什么要说的…</p>
+<h2 id="P68-Switch用法"><a href="#P68-Switch用法" class="headerlink" title="P68 Switch用法"></a>P68 Switch用法</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><pre><code class="java">/* 基本格式
+ *  switch(表达式) {
+         case 值1：
+         语句体1；
+         break；
+
+         case 值2：
+         语句体2；
+         break；
+
+         ...
+
+         defaut;
+         语句体 N+1;
+         break;
+
+ }
+
+
+*/</code></pre>
+<h3 id="表达式接收类型"><a href="#表达式接收类型" class="headerlink" title="表达式接收类型"></a>表达式接收类型</h3><ul>
+<li>基本数据类型 byte, short, char, int（能提升为int类型的都可以）</li>
+<li>引用数据类型可以接受枚举(JDK 1.5) String字符串(JDK 1.7)</li>
+</ul>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><pre><code class="java">class Myclass {
+    public static void main(String[] args) {
+
+        int week = 5;
+
+        switch (week) {
+
+            case 1:
+                System.out.println(&quot;星期一&quot;);
+            break;
+
+
+            case 2:
+                System.out.println(&quot;星期二&quot;);
+               break;
+
+            case 3:
+                System.out.println(&quot;星期三&quot;);
+            break;
+
+            case 4:
+                System.out.println(&quot;星期四&quot;);
+            break;
+
+            case 5:
+                System.out.println(&quot;星期五&quot;);
+            break;
+
+            default:
+                System.out.println(&quot;没有该日期&quot;);
+            break;
+
+        }
+    }
+}
+</code></pre>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><p>case之后只能跟常量不能是变量，而且case后的值不允许出现重复的情况</p>
+</li>
+<li><p>default就和else差不多，尽可能不要省略就完事了</p>
+</li>
+<li><p>break最后一个可以省略，但是其他的不建议省略，会出现case穿透</p>
+<blockquote>
+<p>case穿透是指当表达式的那个值匹配上其中一个case的值之后，程序会一直向下（下方代码）执行语句，忽略case值，直到遇到break跳出为止。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>default 可以放在任意为止，但是建议放在最后</li>
+</ul>
+<pre><code class="java">//挺好玩的情况
+
+int x = 2;
+int y = 3;
+switch(x) {
+    default:
+        y++;
+    case 3:
+        y++;
+    cese 4:
+        y++;
+}
+
+//以上代码中先判断case3和4，然后执行default，但是因为都没有break，
+//所有3和4也都实行了</code></pre>
+<h3 id="穿透的实例应用"><a href="#穿透的实例应用" class="headerlink" title="穿透的实例应用"></a>穿透的实例应用</h3><p>(懒得打了…顺便看看图床还好用不)</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191012030650.png" alt=""></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>switch 建议使用在判断固定值的时候使用</p>
+<p>if 建议在在判断区间范围的时候使用</p>
+<p>（switch 能做的 if 也都可以做）</p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>循环的几个类别：for, while, do…while</p>
+<p>这里只简单说一下do…while</p>
+<pre><code class="java">int i = 1;
+do {
+    System.out.println(&quot;i = &quot; + i)
+}
+while (i &lt;= 10);</code></pre>
+<p>do…while至少要执行一次do中的循环体，即使判断条件不符合。</p>
+<p>for语句和while语句的区别：</p>
+<ol>
+<li>for 语句执行后控制条件的变量会被释放，不能再使用。一般来说单纯的想起到循环功能的时候可以优先考虑。</li>
+<li>while 语句执行之后，判断条件的变量还可以继续使用（之前应该会有声明），最后这个变量的值可能会有其他的用途。</li>
+</ol>
+<p>Mark标记：</p>
+<p>我又偷懒了哈哈哈…</p>
+<p>​        简单来说就是在循环的开头可以用一个合法的标识符加冒号，可以来指定特定的一个循环，然后即使是在最内部的一个循环，也可以通过break xxx的方式来终止任意一层循环。</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191013031426.png" alt=""></p>
+<h2 id="P91-Method方法"><a href="#P91-Method方法" class="headerlink" title="P91 Method方法"></a>P91 Method方法</h2><p>基础的东西就不记录了，这里第一个记录的是 <strong>重载（Overload）</strong></p>
+<p>Definition：方法名相同，参数列表不同，与返回值类型无关</p>
+<p>值得注意的一点是，方法中定义如果第一个是A类别，第二个是B类型，那么在传参的时候，如果把第一个填写成B类型，第二个是A类型的话会报错，所以注意让方法变得更加通用。</p>
+<pre><code class="java">public static void main(String[] args) {
+    int sum1 = add(10, 20);
+    System.out.println(sum1);
+
+    int sum2 = add(10, 20, 30);
+    System.out.println(sum2);
+
+}
+
+public static int add(int a, int b) {
+    return a + b;
+}
+
+public static int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+//以上，两个方法名字可以相同，所传递进去的数据个数或者类型可以不同，而且和他们返回的类型无关</code></pre>
+<h2 id="P100-数组"><a href="#P100-数组" class="headerlink" title="P100 数组"></a>P100 数组</h2><p>简单概述：数组是储存同一种数据量类型多个元素的集合，也可以看成是一个容器。</p>
+<p>数组既可以储存<strong>基本数据类型</strong>，也可以储存<strong>引用数据类型</strong>。</p>
+<pre><code class="java">//基本格式： 数据类型[] 数组名 = new 数组类型[数组长度]；
+int[] arr = new int[5];  //长度为5的整数数组
+System.out.println(arr[0]);
+System.out.println(arr);  //输出结果一般长这样 [I@19bb25a
+
+</code></pre>
+<p>以上值得注意的有三点</p>
+<ol>
+<li><p>左边的”[]”代表的是数字，几个中括号就代表几维数组</p>
+</li>
+<li><p>初始化之后，不赋值的话</p>
+<p>byte, short,int, long[]默认是0</p>
+<p>String[]默认都是null</p>
+<p>float, double[]默认都是0.0</p>
+<p>char[]默认都是’\u0000’</p>
+<p>char说说一句，char在内存中占2 bytes，是16 bits</p>
+<p>\u0000，每一个0代表的其实是16进制的0，（每一个16进制的单个位数可代表4位2进制）</p>
+<p>所以这4个0也就代表的是16个二进制位</p>
+<p>…</p>
+<p>(有趣的是boolean[]默认的都是false)</p>
+</li>
+<li><p>[I@19bb25a 这个东西 </p>
+<p>最左面的 “[“ 代表一维数组</p>
+<p>“I” 代表 int 类型</p>
+<p>“19bb25a” 代表hash code address （16进制）</p>
+</li>
+</ol>
+<pre><code class="java">int[] arr = new int[]{11, 22, 33, 44, 55, 66};  //不允许动静结合
+//可以先声明再赋值（可以拆开）
+int[] arr2 = {11, 22, 33, 44, 55, 66};
+//必须写一起</code></pre>
+<h2 id="Java内存分配以及栈（stack）和堆（heap）的区别"><a href="#Java内存分配以及栈（stack）和堆（heap）的区别" class="headerlink" title="Java内存分配以及栈（stack）和堆（heap）的区别"></a>Java内存分配以及栈（stack）和堆（heap）的区别</h2><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191014180759.png" style="zoom:75%;" />
+
+<p>栈是先进后出（就和枪上子弹一样，先进的后出，后进的先出）</p>
+<p>然后 int[] arr 语句会在栈里新的一块区域（虽然不确定但是感觉就和python里创造一个新的标签是一个意思），然后把实际的数据内容丢到堆里去创造，生成一个详细的地址，然后这个arr标签再指向这个地址。</p>
+<h2 id="P106-数组（Array）的一些操作"><a href="#P106-数组（Array）的一些操作" class="headerlink" title="P106 数组（Array）的一些操作"></a>P106 数组（Array）的一些操作</h2><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><pre><code class="java">public static void allElement(int[] arr) {
+    for (int i = 0; i &lt; arr.length; i++) {
+        System.out.println(arr[i]);
+    }
+}</code></pre>
+<p>一般来说可以把这个先写好写成一个方法，然后直接去调用，看着好看简洁。</p>
+<h3 id="获取数组中的最大值最小值"><a href="#获取数组中的最大值最小值" class="headerlink" title="获取数组中的最大值最小值"></a>获取数组中的最大值最小值</h3><pre><code class="java">public static int getMax(int[] arr) {
+    int max = arr[0];
+    for (int i = 1; i &lt; arr.length; i++) {
+        max = (max &gt; arr[i]) ? max : arr[i];
+    }
+    return max;
+}</code></pre>
+<h3 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h3><pre><code class="java">public static void reverseArray(int[] arr) {
+    for (int i = 0; i &lt; arr.length / 2; i++) {
+        int temp = arr[i];
+        arr[i] = arr[arr.length-1-i];
+        arr[arr.length-1-i] = temp;
+    }
+}</code></pre>
+<h3 id="查找特定元素的index"><a href="#查找特定元素的index" class="headerlink" title="查找特定元素的index"></a>查找特定元素的index</h3><pre><code class="java">public static int getIndex(int[] arr, int value) {
+    foor (int i = 0; i &lt; arr.length; i++) {
+        if (arr[i] == value) {
+            return i;
+        }
+    }
+
+    return -1;
+}</code></pre>
+<h2 id="P111-二维数组"><a href="#P111-二维数组" class="headerlink" title="P111 二维数组"></a>P111 二维数组</h2><p>基本格式</p>
+<pre><code class="java">int [][] arr = new int[3][2];</code></pre>
+<p>第一个数字3表示，有三个一维数组（行）</p>
+<p>第二个数字2表示，有两个元素（个/行）</p>
+<p><strong>区别</strong>：</p>
+<pre><code class="java">int x;
+int y;
+int x, y;
+
+int[] x;  //一维数组x
+int[] y[];  //二维数组y
+
+int[] x, y[];   //此处x是一维数组，y是二维数组</code></pre>
+<p><strong>内存图</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191014220434.png" alt=""></p>
+<p><strong>二维数组输出</strong></p>
+<pre><code class="java">//其实和Python格式一个样
+
+int [][] arr = {{1, 2, 3}, {4, 5}, {6, 7, 8, 9}};
+
+for (int i = 0; i &lt; arr.legth; i++) {
+    for (int j = 0; j &lt; arr[i].length; j++) {
+        System.out.print(arr[i][j] + &quot; &quot;);
+    }
+
+    System.out.println();
+}</code></pre>
+<h2 id="传参的那些小事情（stack-heap）"><a href="#传参的那些小事情（stack-heap）" class="headerlink" title="传参的那些小事情（stack/heap）"></a>传参的那些小事情（stack/heap）</h2><p>还是会涉及到内存的栈</p>
+<p>不多bb直接上例子</p>
+<h3 id="Case-1"><a href="#Case-1" class="headerlink" title="Case 1"></a>Case 1</h3><p>基本数据类型，只会在栈里操作</p>
+<pre><code class="java">public static void main(String[] args) {
+    int a = 10;
+    int b = 20;
+    System.out.println(&quot;a&quot; + a + &quot;,b&quot; + b);  //a = 10, b = 20
+    change(a,b);
+    System.out.println(&quot;a&quot; + a + &quot;,b&quot; + b);  //a = 10, b = 20
+
+}
+
+public static void change(int a, int b) {
+    System.out.println(&quot;a&quot; + a + &quot;,b&quot; + b);  //a = 10, b = 20
+    a = b;  //a = 20
+    b = a + b;  //b = 40
+    System.out.println(&quot;a&quot; + a + &quot;,b&quot; + b);  //a = 20, b = 40
+
+}</code></pre>
+<p>在main里的a和b是只在main里的，调用change把a和b丢进去只是会有一个传值的过程，并不是说把a和b本身传进去。</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191015042650.png" alt=""></p>
+<p>运行完change之后会弹栈（出栈），基本数据类型的值传递，不改变原值，因为调用后就会弹栈，局部变量随之消失。</p>
+<h3 id="Case-2"><a href="#Case-2" class="headerlink" title="Case 2"></a>Case 2</h3><p>这里涉及到了引用数据类型，会有堆（heap）参与进来</p>
+<pre><code class="java">public static void main(String[] args) {
+    int [] arr = {1, 2, 3, 4, 5};
+    change(arr);
+    System.out.println(arr[1]);  //输出结果：4
+
+}
+
+public static void change(int[] arr) {
+    for (int i = 0; i &lt; arr.length; i++) {
+        if (arr[i] % 2 == 0) {  //凡是偶数的都会乘二
+            arr[i] *= 2;
+        }
+    }
+}</code></pre>
+<p>简易图解</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191015043807.png" alt=""></p>
+<p>在语句int[]出现之后会在堆(heap)里产生对应的一块空间，然后调用change()方法的时候会压栈（进栈）并且吧刚才的arr传进来，这个操作是对堆(heap)内的数据进行操作，main中的arr和change中的arr都指向的是一个地址，所以这次会发生改变，里面的最后结果是[1,4,3,8,5] 而不是[1,2,3,4,5]</p>
+<p>引用数据类型的值传递，会发生改变原值的情况，因为即使方法弹栈，但是堆内存的数组对象还是存在的，可以通过地址访问到。</p>
+<p><strong>Java中到底是值传递还是地址传递</strong></p>
+<ol>
+<li>既是传值，也是传地址；基本数据类型传递的值，而引用数据类型传递的是地址</li>
+<li>只有传值，因为地址值也是值（面试用这种说法，支持者是高斯林，java之父）</li>
+</ol>
+<h1 id="2019-10-15"><a href="#2019-10-15" class="headerlink" title="2019/10/15"></a>2019/10/15</h1>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+
+<script src="/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        id: 'http://yoursite.com/2019/10/09/Java-Note-P1-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/', // 可选。默认为 location.href
+        owner: 'BlckKn1fe',
+        repo: 'gitment-saving',
+        oauth: {
+            client_id: '3944833dd841590cab30',
+            client_secret: '3466e3197bcf0b5fa92589bef7a2279eb706913c',
+        },
+    })
+    gitment.render('comments')
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2019-2020 黑刀</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 542px;
+        }
+        .nav.fullscreen {
+            margin-left: -542px;
+        }
+        .nav-left {
+            width: 150px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 542px;
+            margin-left: -542px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 542px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

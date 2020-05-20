@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Java Note P3 (黑马程序员) | 黑刀的个人墨客</title>
+  <meta name="keywords" content=" Java , Note ">
+  <meta name="description" content="Java Note P3 (黑马程序员) | 黑刀的个人墨客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Note P4 黑马程序员">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/index.html">
+<meta property="og:site_name" content="黑刀的个人墨客">
+<meta property="og:description" content="笔记内容全部来源于https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av17029959  P4 集合和异常Collection基本的方法演示中老师没用泛型，泛型主要是针对安全问题，后续会讲到    Method Description    boolean add(E e) 之所以会返回boolean是为了服务Set的   boolean remove (Object o) N&#x2F;A">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200516214932.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519223858.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200519230216.png">
+<meta property="article:published_time" content="2020-03-05T09:40:06.000Z">
+<meta property="article:modified_time" content="2020-05-20T10:45:34.955Z">
+<meta property="article:author" content="黑刀">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200323070640.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.0.1" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>黑刀</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/BlckKn1fe" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lding1003@gmail.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=553658519&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=121733025" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="All">All<small>(5)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Java">Java<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Life">Life<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">Friends</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://flowermushroom.github.io">花蘑菇</a></li>
+            
+            <li><a target="_blank" href="https://www.yeliulee.com/">琉璃</a></li>
+            
+            <li><a target="_blank" href="https://www.cnblogs.com/nightrainlemon">夜雨柠檬</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Note</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All Java "
+           href="/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P4 黑马程序员">Java Note P4 黑马程序员</span>
+            <span class="post-date" title="2020-03-05 17:40:06">2020/03/05</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/11/18/Java-Note-P3-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P3 (黑马程序员)">Java Note P3 (黑马程序员)</span>
+            <span class="post-date" title="2019-11-18 12:43:23">2019/11/18</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/15/Java-Note-P2-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P2 (黑马程序员）">Java Note P2 (黑马程序员）</span>
+            <span class="post-date" title="2019-10-15 23:39:14">2019/10/15</span>
+        </a>
+        
+        <a  class="All Java "
+           href="/2019/10/09/Java-Note-P1-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P1 (黑马程序员)">Java Note P1 (黑马程序员)</span>
+            <span class="post-date" title="2019-10-09 00:33:50">2019/10/09</span>
+        </a>
+        
+        <a  class="All Life "
+           href="/2019/10/04/%E6%B2%A1%E6%83%B3%E5%88%B0%E6%88%91%E4%B9%9F%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="没想到我也二十二了">没想到我也二十二了</span>
+            <span class="post-date" title="2019-10-04 00:16:35">2019/10/04</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Java-Note-P3-黑马程序员" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Java Note P3 (黑马程序员)</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+            <a class="color5">Note</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-05-20 18:45:32'>2019-11-18 12:43</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-常见对象"><span class="toc-text">Java 常见对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#P1-P8快捷键"><span class="toc-text">P1~P8快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P9-Jar文件"><span class="toc-text">P9 Jar文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P13-传参问题"><span class="toc-text">P13 传参问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P14-Object类"><span class="toc-text">P14 Object类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hashCode"><span class="toc-text">hashCode()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getClass"><span class="toc-text">getClass()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-NaN"><span class="toc-text">toString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#equals"><span class="toc-text">equals</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P21-Scanner"><span class="toc-text">P21 Scanner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P23-String类"><span class="toc-text">P23 String类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单概述"><span class="toc-text">简单概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constructor"><span class="toc-text">Constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常量池以及堆内存"><span class="toc-text">常量池以及堆内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用方法"><span class="toc-text">常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P38-StringBuffer类（更安全）"><span class="toc-text">P38 StringBuffer类（更安全）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造方法"><span class="toc-text">构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用方法-1"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传参"><span class="toc-text">传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小节"><span class="toc-text">小节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P57-Integer（Wraplcass）"><span class="toc-text">P57 Integer（Wraplcass）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动装箱-拆箱"><span class="toc-text">自动装箱 &#x2F; 拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面试题"><span class="toc-text">面试题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式-Regular-Expression"><span class="toc-text">正则表达式 (Regular Expression)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符类"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预定义字符类"><span class="toc-text">预定义字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数量词"><span class="toc-text">数量词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单案例"><span class="toc-text">简单案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replaceAll-用法"><span class="toc-text">replaceAll 用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式分组"><span class="toc-text">正则表达式分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pattern-和-Matcher"><span class="toc-text">Pattern 和 Matcher</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math类"><span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random类"><span class="toc-text">Random类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System类"><span class="toc-text">System类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigInteger类"><span class="toc-text">BigInteger类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigDecimal类"><span class="toc-text">BigDecimal类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleDateFormat-类"><span class="toc-text">SimpleDateFormat 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calendar类"><span class="toc-text">Calendar类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可算结束了"><span class="toc-text">可算结束了</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>笔记内容全部来源于 <a href="https://www.bilibili.com/video/av16566857" target="_blank" rel="noopener">https://www.bilibili.com/video/av16566857</a> </p>
+</blockquote>
+<h1 id="Java-常见对象"><a href="#Java-常见对象" class="headerlink" title="Java 常见对象"></a>Java 常见对象</h1><h2 id="P1-P8快捷键"><a href="#P1-P8快捷键" class="headerlink" title="P1~P8快捷键"></a>P1~P8快捷键</h2><ul>
+<li>Ctrl + N : 新建</li>
+<li>Ctrl + Shift + F : 格式化</li>
+<li>Ctrl + Shift + O : 整理包</li>
+<li>Alt + ↑ / ↓ : 移动代码</li>
+<li>Ctrl + Alt + ↑ / ↓ : 把当前行的代码复制一行</li>
+<li>Ctrl + Shift + T : 搜索具体的类</li>
+<li>Ctrl + 1 : IDE给建议</li>
+<li>Ctrl + D : 删除代</li>
+<li>Alt + Shift + M : 抽取方法</li>
+<li>Alt + Shift + R : 集体改名</li>
+<li>Alt + Shift + S : <ol>
+<li>加C创建空参构造</li>
+<li>加O创建有参构造</li>
+<li>加R创建Set / Get方法</li>
+<li>加V重写方法</li>
+<li>加S创建 toString() 方法</li>
+</ol>
+</li>
+</ul>
+<h2 id="P9-Jar文件"><a href="#P9-Jar文件" class="headerlink" title="P9 Jar文件"></a>P9 Jar文件</h2><p>右键工程文件，选择导出，再选择Jar File后，把工程中的东西都打包在一起。</p>
+<p>在使用的时候，直接复制Jar包，在当前的工程中直接Ctrl + V粘贴过来；右键Jar抱后，选择Build Path → Add to Build Path才算完成（出现奶瓶）</p>
+<p>在移除的时候右键选择奶瓶，选择Build Path → Remove即可。</p>
+<p><strong>注意：</strong>在实际开发中不只是复制过来这么简单，一般会创建一个lib文件夹，把这些Jar包放在一起统一管理。</p>
+<h2 id="P13-传参问题"><a href="#P13-传参问题" class="headerlink" title="P13 传参问题"></a>P13 传参问题</h2><p>这里用Debug的方式简单说了一下传参的问题。</p>
+<p>当传递一些基础数据类型的时候，只是简单的传值；比如一个 change(int a, int b) 方法，传进去的只是值而已，并不会对方法歪的a和b进行修改。</p>
+<p>而如果传进去的是一个非基础数据类型的话，传进去的是地址值，比如传一个数组进去。这样经过一系列操作，是会对这个数组进行改变的。</p>
+<h2 id="P14-Object类"><a href="#P14-Object类" class="headerlink" title="P14 Object类"></a>P14 Object类</h2><p>Object是最最最顶层的类，所有的类都继承了Object的类，它自己有带一些方法。</p>
+<h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h3><p>哈希表这个东西，形象一点形容，它就像是经过一个公式来得到的一串数字（官方文档有写），这个数字表明了某个对象具体被存放的位置；有时候会出现不同对象共用一个哈希值，遇到这种情况，大多数情况都会用一个LinkedList来解决，系统找到这个哈希值之后，在去具体寻找想用的对象。</p>
+<h3 id="getClass"><a href="#getClass" class="headerlink" title="getClass()"></a>getClass()</h3><p>getClass返回的是一个Class类（注意这是大写的C），Class类是用来形容类的类。</p>
+<pre><code class="java">Student s = new Student(&quot;张三&quot;, 23);
+Class cls = s.getClass();
+String name = cls.getName();</code></pre>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><p>这不说了…很熟悉了</p>
+<p>多说一句：如果直接父类或者间接父类重写的话，它也可以直接继承下来。</p>
+<h3 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h3><p>这个源码是判断两个对象的地址值，一般来说是需要改写的；比如比较两个人：</p>
+<pre><code class="java">Person s1 = new Person(&quot;Jack&quot;, 23);
+Person s2 = new Person(&quot;Jack&quot;, 23);</code></pre>
+<p>这里s1和s2是一个人，但是地址值不同，很明显这不符合我们判断两个人是否一致的标准。名字都是Jack，年龄都是23，这样有一样的特征属性的时候，他们就是一个人。所以需要改写 equals() 方法，在这个方法中比较姓名和年龄</p>
+<p>“ == “ 和 “equals” 的对比：</p>
+<p>共同点：都可以做比较，返回值都是boolean类型</p>
+<p>区别：<br>          1. “==” 是比较运算符，可以比较基本数据类型和引            用数据类型；基本数据类型比较值，引用数据类型比较地址值。<br>                        2. equals 方法在没重写之前，比较地址值，底层依赖是 “ == “，但是比较地址值无意义，需要重写，比较对象中的属性值。equals 方法只能比较引用数据类型。</p>
+<h2 id="P21-Scanner"><a href="#P21-Scanner" class="headerlink" title="P21 Scanner"></a>P21 Scanner</h2><p>用Scanner输入整数之后在输入字符串的话，会出现跳过输入字符串的情况：</p>
+<pre><code class="java">Scanner sc = new Scanner(System.in);
+System.out.println(&quot;请输入第一个整数:&quot;);
+int i = sc.nextInt();
+System.out.println(&quot;请输入第二个字符串:&quot;);
+String line = sc.nextLine();
+System.out.println(&quot;i: &quot; + i + &quot;, line: &quot; + line);
+</code></pre>
+<p>这是因为，键盘输入默认会跟着 \r\n ，而nextInt只取了10，后面的 \r\n 留下了； 之后 nextLine 是越到 \r\n 就停止本行的扫描，所以没有再次要求用户输入下一行的内容</p>
+<p>解决方案：全都用 nextLine 解决，然后用Inegeter.parseInt来进行转换。（用到if来判断类别）</p>
+<h2 id="P23-String类"><a href="#P23-String类" class="headerlink" title="P23 String类"></a>P23 String类</h2><h3 id="简单概述"><a href="#简单概述" class="headerlink" title="简单概述"></a>简单概述</h3><p>字符串字面值 “abc” 是一个字符串对象；而且字符串是常量，一旦被赋值，就不能改变。</p>
+<pre><code class="java">String str = &quot;abc&quot;;  // 创建一个 &quot;abc&quot;对象，str指向 &quot;abc&quot; 的地址
+str = &quot;def&quot;;  // 创建 &quot;def&quot; 对象，重新指向
+// 这里创建的字符串是在常量池里
+</code></pre>
+<h3 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h3><table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String()</td>
+<td>空参构造</td>
+</tr>
+<tr>
+<td>String(byte[] bytes)</td>
+<td>把字节数组转成字符串</td>
+</tr>
+<tr>
+<td>String(byte[] bytes, int index, int length)</td>
+<td>转一部分</td>
+</tr>
+<tr>
+<td>String(char[] value)</td>
+<td>把字符数组转成字符串</td>
+</tr>
+<tr>
+<td>String(char[] value, int index, int count)</td>
+<td>转一部分</td>
+</tr>
+<tr>
+<td>String(String original)</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这是一个转码的过程，数组里如果放的是数字的话，会根据系统本地的编码进行转换，很多编码都实现了ASCII，所以97是a，98是b …</p>
+<p>上面转一部分的，第二个参数 index 代表从第几个开始，inclusive，然后length代表从起始点开始，取多少个，也就是想要得到的长度。</p>
+<h3 id="常量池以及堆内存"><a href="#常量池以及堆内存" class="headerlink" title="常量池以及堆内存"></a>常量池以及堆内存</h3><p>常量池中没有字符串对象的话，会创建一个，有的话，直接拿来用。</p>
+<pre><code class="java">String s1 = &quot;abc&quot;;
+String s2 = &quot;abc&quot;;
+// S1 和 S2 指向同一个地址值</code></pre>
+<p>使用 new 创建字符串对象的时候，会创建两个对象；堆内存中创建的对象，可以当做是一种副本的存在方式。常量池中的字符串和堆内存中的对象地址值不相同。</p>
+<pre><code class="java">String s1 = new String(&quot;abc&quot;);
+s2 = &quot;abc&quot;;
+System.out.println(s1 === s2);  // false
+System.out.println(s1.equals(s2));  // true</code></pre>
+<p>Java中自带常量优化机制，”a”, “b”, “c”, 三个相加，编译的时候就会在常量池中创建 “abc” 对象</p>
+<pre><code class="java">String s1 = &quot;a&quot; + &quot;b&quot; + &quot;c&quot;;
+String s2 = &quot;abc&quot;;
+System.out.println(s1 === s2);  // true
+System.out.println(s1.equals(s2));  // true</code></pre>
+<p>还有一种特殊情况说明，对于String的 “ + “ 的；加号底层是通过StringBuilder或StringBuffer以及他们的append功能实现的，然后toString输出出来。具体实现入下图：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20191223131229.png" alt=""></p>
+<p>此时如果执行以下代码</p>
+<pre><code class="java">String s3 = s1 + &quot;c&quot;;
+System.out.println(s3 === s2);  // false
+System.out.println(s3.equals(s2));  // true</code></pre>
+<p>因为s3指的是堆内存中对象的地址，而s2指向的是常量池中的地址，所以 “ == “ 返回的是false</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li><p>equals(Object o) : 比较相不相同</p>
+</li>
+<li><p>equalsIgnoreCase(String str) : 不区分大小写进行比较内容</p>
+</li>
+<li><p>contians(String str) : 问包不包含某个什么什么</p>
+</li>
+<li><p>startsWith(String str) : 判断是否以某段开头</p>
+</li>
+<li><p>endsWith(String str) : 判断是否以某段结束</p>
+</li>
+<li><p>isEmpty() : 判断是否为空（不是判断null的）</p>
+</li>
+<li><p>length() : 获得字符串长度</p>
+</li>
+<li><p>charAt(int index) : 得到指定索引位置的字符</p>
+<p><strong>所有indexOf返回 -1 的话代表没找到</strong></p>
+</li>
+<li><p>indexOf(int ch) : 这里ch实际是ASCII，比如97就是找第一个a的位置，参数写char类型也可以，注意使用单引号</p>
+</li>
+<li><p>indexOf(String str) : 返回该字符第一次出现的位置</p>
+</li>
+<li><p>indexOf(int ch, int fromIndex) : 返回该字符在指定位置之后第一次出现的位置</p>
+</li>
+<li><p>indexOf(String str, int fromIndex) : 返回该字符串在指定位置之后第一次出现的位置</p>
+</li>
+<li><p>lastIndexof : 这个和上面用法差不多，只是是从后向前找，索引还是从左往右，不展开写了</p>
+</li>
+<li><p>substring(int start) : 截取字符串用的，默认是从start的索引开始到结尾</p>
+</li>
+<li><p>substring(int start, int end) : 规定截取的详细范围，左闭右开</p>
+</li>
+<li><p>getBytes() : 把一串字符串变成一个字节数组（根据本地码表）</p>
+</li>
+<li><p>toCharArray() : 把一串字符变成一个字符字符字符数组!!!</p>
+</li>
+<li><p>valueOf(char[] chs) : 这是个静态方法!! 把一串字符数组转成字符串，底层实际是由 String 类的 Constructor 实现的</p>
+</li>
+<li><p>valueOf(int i) : 把一个数变成字符串</p>
+<p>valueIOf 可以把任意数据类型转换字符串，具体看IDE自带的补齐</p>
+</li>
+<li><p>toLowerCase() : 没什么讲的，注意不是对本身进行大小写改变</p>
+</li>
+<li><p>toUpperCase() : 同上</p>
+</li>
+<li><p>concat(String str) : 连接两个字符串，不过没 “ + “ 强大</p>
+</li>
+<li><p>replace(char old, char new) : 注意这是字符</p>
+</li>
+<li><p>replace(String old, String new) : 这是字符串</p>
+</li>
+<li><p>trim() : 去掉两端空格</p>
+</li>
+</ol>
+<h2 id="P38-StringBuffer类（更安全）"><a href="#P38-StringBuffer类（更安全）" class="headerlink" title="P38 StringBuffer类（更安全）"></a>P38 StringBuffer类（更安全）</h2><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
+<li>StringBuffer() : 不带字符的buffer，初始容量16个字符</li>
+<li>StringBuffer(int capacity) : 初始容量为capacity的buffer</li>
+</ol>
+<h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>append() : 没啥说的</li>
+<li>insert(int offset, String str) : 在指定索引的地方添加内容，注意不要越界</li>
+<li>deleteCharAt(int index) : 根据索引删除指定位置的字符</li>
+<li>delete(int start, int end) : 删除指定范围内的字符，注意，左闭右开</li>
+<li>replace(int start, int end, String str) : 替换字符，还是左闭右开</li>
+<li>reverse() : 反转</li>
+<li>StringBuffer也有截取功能，也是substring，用法一样，需要注意的是返回类型是String，需要用String来接受；同时原来的StringBuffer内容是不变的</li>
+<li>String转StringBuffer可以通过StringBuffer的构造方法或者append；反之StringBuffer转String的话可以直接丢进String构造方法中、toString方法或者substring截取</li>
+</ol>
+<h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><p><strong>先说String</strong></p>
+<pre><code class="java">public static void main(String[] args) {
+    String s = &quot;heima&quot;;
+    System.out.println(s);  // heima
+    change(s);
+    System.out.println(s);  // heima
+}
+
+public static void change(String s) {
+    s += &quot;itcast&quot;;
+}</code></pre>
+<p>基本数据类型的值传递，不改变起值</p>
+<p>引用数据类型的值传递，改变其值（其实传禁区的）</p>
+<p>String虽然是引用数据类型，但是他所谓参数传递时，和基本数据类型一样</p>
+<p><strong>再说StringBuffer</strong></p>
+<pre><code class="java">public static void main(String[] args) {
+    StringBuffer sb = new StringBuffer(&quot;heima&quot;);
+    System.out.println(sb);  // heima
+    change(sb);
+    System.out.println(s);  // heimaitcast
+}
+
+public static void change(StringBuffer sb) {
+    sb.append(&quot;itcast&quot;);
+}</code></pre>
+<h3 id="小节"><a href="#小节" class="headerlink" title="小节"></a>小节</h3><p>这玩应还挺好用的，对String的操作上更灵活；可以先把需要操作的String丢过来，操作完之后再转回去</p>
+<p>另外StringBuilder和StringBuffer用法基本一样，只不过StringBuilding线程不安全，但是效率高；反之StringBuffer线程安全，效率低。</p>
+<h2 id="P57-Integer（Wraplcass）"><a href="#P57-Integer（Wraplcass）" class="headerlink" title="P57 Integer（Wraplcass）"></a>P57 Integer（Wraplcass）</h2><h3 id="自动装箱-拆箱"><a href="#自动装箱-拆箱" class="headerlink" title="自动装箱 / 拆箱"></a>自动装箱 / 拆箱</h3><p>这里提一嘴自动装箱和自动拆箱</p>
+<pre><code class="java">/* 创造Integer对象的时候，可以直接给值，这是自动装箱的过程
+ * 直接用Integer对象和一个基本数据类型 int 相加的时候
+ * 底层自动会调用 i1.intValue() 和 int 相加
+ * 要注意，当对象为null的时候，会有空指针异常的问题
+ */
+Integer i1 =  100;
+int x = i1 + 200;</code></pre>
+<h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><pre><code class="java">Integer i1 = new Integer(97);
+Integer i2 = new Integer(97);
+System.out.println(i1 == i2);      // false
+System.out.println(i1.equals(i2);  // true
+</code></pre>
+<p>创建两个Integer对象，地址值当然不一样，” == “ 比较地址值，而equals</p>
+<p>被重写，比较属性值</p>
+<pre><code class="java">Integer i3 = 127;
+Integer i4 = 127;
+System.out.println(i3 == i4);      // true
+System.out.println(i3.equals(i4);  // true
+
+Integer i5 = 128;    // false
+Integer i6 = 128;    // false
+</code></pre>
+<p>当这个数值在 -128 ~ 127 之间的时候，它会从常量池中直接找到这个数，它就会去创造一个对象，-128 ~ 127 刚好是byte的取值范围，下面放一下源码。</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200107221544.png" alt=""></p>
+<p>如果这个数字在这个范围内的话，会在一个列表里直接找到这个数（准确点说是 Integer 对象，这个方法返回类型就是 Integer），否则创建对象。</p>
+<h2 id="正则表达式-Regular-Expression"><a href="#正则表达式-Regular-Expression" class="headerlink" title="正则表达式 (Regular Expression)"></a>正则表达式 (Regular Expression)</h2><p>String自带的一个匹配正则的方法</p>
+<pre><code class="java">&quot;5449872&quot;.matches.(regex);</code></pre>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[abc]</td>
+<td align="center">表示abc三个<strong>单个字符</strong></td>
+</tr>
+<tr>
+<td align="center">[^abc]</td>
+<td align="center">除abc外任意<strong>单个字符</strong> <em>（10 不算）</em></td>
+</tr>
+<tr>
+<td align="center">[a-zA-Z]</td>
+<td align="center">a到z，A到Z，<strong>单个字符</strong></td>
+</tr>
+<tr>
+<td align="center">[a-d[m-p]]</td>
+<td align="center">a到d，或m到p，<strong>单个字符</strong></td>
+</tr>
+<tr>
+<td align="center">[a-z&amp;&amp;[def]]</td>
+<td align="center">结果为d、e或f，交集，<strong>单个字符</strong></td>
+</tr>
+<tr>
+<td align="center">[a-z&amp;&amp;[ ^cd]]</td>
+<td align="center">a到z，除了c和d，<strong>单个字符</strong></td>
+</tr>
+<tr>
+<td align="center">[a-z&amp;&amp;[ ^c-f]]</td>
+<td align="center">a到z，除了c到f，<strong>单个字符</strong></td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207225558.png" alt=""></p>
+<h3 id="预定义字符类"><a href="#预定义字符类" class="headerlink" title="预定义字符类"></a>预定义字符类</h3><table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">任意字符，<strong>一个点一个字符</strong></td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center"><strong>单个</strong>数字字符</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">单个非数字字符</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">空白字符，[ \t\n\x0B\f\r]</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">非空白字符</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">a到z，A到Z，0到9，下划线</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">除了单词字符以外的</td>
+</tr>
+</tbody></table>
+<p><strong>以上要注意反斜转义!!!</strong></p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207225945.png" alt=""></p>
+<h3 id="数量词"><a href="#数量词" class="headerlink" title="数量词"></a>数量词</h3><table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X?</td>
+<td align="center">出现一次或0次</td>
+</tr>
+<tr>
+<td align="center">X*</td>
+<td align="center">出现零次或多次</td>
+</tr>
+<tr>
+<td align="center">X+</td>
+<td align="center">出现一次或多次</td>
+</tr>
+<tr>
+<td align="center">X{n}</td>
+<td align="center">恰好出现n次</td>
+</tr>
+<tr>
+<td align="center">X{n,}</td>
+<td align="center">至少出现n次</td>
+</tr>
+<tr>
+<td align="center">X{n,m}</td>
+<td align="center">至少出现n次，但是不超过m次</td>
+</tr>
+</tbody></table>
+<p>（例子说明用法）</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207230843.png" alt=""></p>
+<h3 id="简单案例"><a href="#简单案例" class="headerlink" title="简单案例"></a>简单案例</h3><p>这里的案例就是给一个字符串的数组，然后通过split把这个字符串数组变成一个int数组，用Arrays工具类排序之后输出。在输出这一个环节上出现一个有关内存优化的小细节：</p>
+<p><img src="C:%5CUsers%5Clding%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200207231608445.png" alt="image-20200207231608445"></p>
+<p>如果用 str += 的方法的话，每一次这个 str 都会指向一个新的内存地址，这样之前的字符串就会变成垃圾，如果这个数组很长的话会造成内存资源的浪费。所以这里可以使用 <strong>StringBuilder</strong> 来做这件事，它就在堆内存里创建一个对象，同时本身是一个可变的字符序列，占用更少的内存空间。</p>
+<h3 id="replaceAll-用法"><a href="#replaceAll-用法" class="headerlink" title="replaceAll 用法"></a>replaceAll 用法</h3><pre><code class="java">public String replaceAll(String regex, String replacement)</code></pre>
+<p>这里系统会一个个去遍历这个字符串，然后看每一个字符串是不是符合正则表达式的要求，所以在案例中，无论多少个数字都会被替换掉。</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207232314.png" alt=""></p>
+<h3 id="正则表达式分组"><a href="#正则表达式分组" class="headerlink" title="正则表达式分组"></a>正则表达式分组</h3><p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207232504.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200207235322.png" alt=""></p>
+<p>这里先用</p>
+<pre><code class="java">String s2 = s.replaceAll(&quot;\\.&quot;, &quot;&quot;);</code></pre>
+<p>把所有的点都替换掉，然后在下面第二次替换的时候，先利用</p>
+<pre><code class="java">&quot;(.)\\1+&quot;</code></pre>
+<p>把重复的字符全都获取到，比如获取到 “我我我我我我”，然后利用 $1 把这一堆 “我” 替换掉。这里的 $1 是指的第一组里的内容，也就是 “ (.) “ 里的内容。组数是由左向右来判断的，一个括号一个组。</p>
+<h3 id="Pattern-和-Matcher"><a href="#Pattern-和-Matcher" class="headerlink" title="Pattern 和 Matcher"></a>Pattern 和 Matcher</h3><p>简单的用法介绍：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200208000135.png" alt=""></p>
+<p>下面用一个简单的截取电话号的小案例来说明：</p>
+<pre><code class="java">String s = &quot;我的手机号是18988888888，曾经用过18666668888，还用过18812345678&quot;;
+String regex = &quot;1[3578]\\d{9}&quot;
+Pattern p = Pattern.compile(regex);
+Matcher m = p.matcher(s);
+
+while(m.find()) {
+    System.out.println(m.group());
+}</code></pre>
+<p>regex中：</p>
+<p>1 代表第一个数是 1</p>
+<p>[3578] 代表第二位是3578中的一个</p>
+<p>后面的 \\d{9} 表示任意出现9个数字</p>
+<p>之后用 Pattern 规定格式，并生成一个 Matcher</p>
+<p>把这一串字符串丢给Matcher，然后用内置方法 find() 去寻找是否存在，如果存在的话，就会有指针指向第一段符合正则的字符串，然后存在一个地方，用 group() 就可以获取到那一串，再调用 find() 还会找到下一个符合规正则的字符串，直到最后没有了为止，会返回false</p>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><p> 这有啥讲的… 记得有这个东西就行</p>
+<p>有取PI常量、取绝对值、ceil/floor、二选一个最大值、平方、随机数、四舍五入、开根等功能。</p>
+<h2 id="Random类"><a href="#Random类" class="headerlink" title="Random类"></a>Random类</h2><p>在这多说两句废话，这里的Random创造的一个对象生成的随机数，也是伪随机数，底层是先给构造函数一个seed，根据这个seed来生成随机数的。空参构造里是取 nanoTime 来作为 seed的。</p>
+<p>Random里有一个方法很好用，可以很方便的随机取一个范围内的数：</p>
+<pre><code class="java">Random r = new Random();
+r.nextInt(50);</code></pre>
+<p>这就会取得一个 0~49 之间的随机数，想取 20 ~ 59 之间的随机数的话</p>
+<pre><code class="java">int a = 20 + r.nextInt(40);</code></pre>
+<p>即可</p>
+<h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>几个可能常用的成员方法：</p>
+<pre><code class="java">public static void gc();
+public static void exit(int status);
+public static long currentTimeMillis();
+public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length);
+</code></pre>
+<h2 id="BigInteger类"><a href="#BigInteger类" class="headerlink" title="BigInteger类"></a>BigInteger类</h2><p>主要是用来装非常大的数的，可以实现加减乘除，取div和mod，好像也没什么说的，作为了解知道就可以了。</p>
+<h2 id="BigDecimal类"><a href="#BigDecimal类" class="headerlink" title="BigDecimal类"></a>BigDecimal类</h2><p>同上，为了更高的精度，记得传进去的是字符串</p>
+<pre><code class="java">BigDecimal bd1 = BigDecimal.valueOf(2.0);
+BigDecimal bd2 = new BigDecimal(&quot;1.1&quot;);
+System.out.println(bd1.subtract(bd2));  // 0.9</code></pre>
+<h2 id="SimpleDateFormat-类"><a href="#SimpleDateFormat-类" class="headerlink" title="SimpleDateFormat 类"></a>SimpleDateFormat 类</h2><p>它是继承了DateFormat，DateFormat是个抽象类。</p>
+<pre><code class="java">Date d = new Date();
+SimpleDateFormat sdf = new SimpleDateFormat();
+System.out.println(sdf.format(d));  //yy-mm-dd AM/PM HH:mm</code></pre>
+<p>这里时间的显示的格式，用户是可以自定义的</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200208231329.png" alt=""></p>
+<pre><code class="java">SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);
+</code></pre>
+<p>这里的四个y可以写成一个y，两个M可以写成一个M，其他同理，但是开发中还是建议写成四个/两个的形式。</p>
+<p>然后它还可以把按照规则写的时间字符串转换成Date对象（Date类之前根本就没写，用的时候现查吧，感觉用到的不会很多）</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200208232035.png" alt=""></p>
+<h2 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h2><p>Date类过时了，用来替换Date的</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200209000351.png" alt=""></p>
+<p>这里其实是父类引用指向子类对象，实际产生的对象是 GregorianCalendar</p>
+<p>Calender其他的一些方法：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200209000918.png" alt=""></p>
+<hr>
+<h2 id="可算结束了"><a href="#可算结束了" class="headerlink" title="可算结束了"></a>可算结束了</h2><p>哇，这一章可算结束了，这一月份生了病耽误了好多进程。太难顶了，要抓紧时间追进度了。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+
+<script src="/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        id: 'http://yoursite.com/2019/11/18/Java-Note-P3-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/', // 可选。默认为 location.href
+        owner: 'BlckKn1fe',
+        repo: 'gitment-saving',
+        oauth: {
+            client_id: '3944833dd841590cab30',
+            client_secret: '3466e3197bcf0b5fa92589bef7a2279eb706913c',
+        },
+    })
+    gitment.render('comments')
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2019-2020 黑刀</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 542px;
+        }
+        .nav.fullscreen {
+            margin-left: -542px;
+        }
+        .nav-left {
+            width: 150px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 542px;
+            margin-left: -542px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 542px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
