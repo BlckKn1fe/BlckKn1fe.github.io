@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>没想到我也二十二了 | 黑刀的个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="没想到我也二十二了 | 黑刀的个人博客">
+  <title>单例设计模式（Singleton） | 黑刀的个人博客</title>
+  <meta name="keywords" content=" Note , 设计模式 ">
+  <meta name="description" content="单例设计模式（Singleton） | 黑刀的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="用 Java 实现了一个极其简陋的 UDP 通讯，内容全部来源于 Java Note P5 黑马程序员 import java.awt.*; import java.awt.event.*; import java.io.*; import java.net.*; import java.text.SimpleDateFormat; import java.util.*;  class MyFra">
 <meta property="og:type" content="article">
@@ -361,9 +361,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-没想到我也二十二了" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-单例设计模式（Singleton）" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">没想到我也二十二了</h1>
+        <h1 class="article-title">单例设计模式（Singleton）</h1>
     
     <div class="article-meta">
         
@@ -372,20 +372,29 @@
         <span class="book">
             <i class="iconfont icon-category"></i>
             
-            <a  data-rel="Life">Life</a>
+            <a  data-rel="设计模式">设计模式</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Note</a>
+            
+            <a class="color5">设计模式</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-06-12 18:14:44'>2019-10-04 00:16</time>
+            发布时间 : <time class="date" title='最后更新: 2020-06-12 18:14:44'>2020-06-10 16:40</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:264</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -415,7 +424,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#22岁"><span class="toc-text">22岁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#四年前"><span class="toc-text">四年前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这四年"><span class="toc-text">这四年</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来三年"><span class="toc-text">接下来三年</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -431,15 +440,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="22岁"><a href="#22岁" class="headerlink" title="22岁"></a>22岁</h1><h2 id="四年前"><a href="#四年前" class="headerlink" title="四年前"></a>四年前</h2><p>还记得四年前的一天，如往常一样坐在教室里和同学们上着课，赶着写每天那些写不完的作业，一个日本留学的项目突然就闯进了我的生活，没有任何的征兆也没有任何的思想准备。抱着随便听一听的态度去了那个大的阶梯教室，就在这里，我的人生轨迹发生了重大的转向，或许这是转向实现自我人生价值的一条道路，也可能是偏离的一条道路。</p>
-<p>在那一刻，好像自己的思想不受到自己的控制，曾经抵触的害怕的事情变得十分向往，就这样一个至今我都觉得有些疯狂的事情，就这样没有经过太多的考虑就决定了，或许，或许，这是直觉给我的指引吧。4年前的7月，就这样离开了生我养我18年的故土。至今还记得离开前的几天，那是傍晚时分，看着模糊的“吉林站”三个字在黑夜中闪动着红色的残影。</p>
-<p>就这样离开了故土，去了深圳，或许从这一刻开始，我的第二故乡就变成了深圳。</p>
-<h2 id="这四年"><a href="#这四年" class="headerlink" title="这四年"></a>这四年</h2><p>还记得刚刚到深圳的你吗，一个刚刚高二的小屁孩辍学去了深圳，为自己的留学生活做准备。现实总是那么的残忍，刚到深圳的很长一段时间所停留的一个状态，或许就是我22岁之前最消沉的一段时间把，所感受到的痛苦，是绝无仅有的。这份压力和痛苦和坐在教室里每天受着书本的折磨是大不一样的，希望自己现在还是未来，都不要再进入那种状态了，因为自己已经长大很多啦。</p>
-<p>这四年中真的发生了很多事呢，没办法全都一一记住并且记录下来，我也不会去刻意的记录这些，但是有些人，可能无论何时何地，都会在自己的心中有一个永久的印章，谢谢你们这些人带给我的五味杂陈。</p>
-<p>18岁那一年，离开故土的那一刻，自己就暗下决心，在自己25岁之前一定要有所作为，那时的我真的是太过稚嫩，对自己和对自己想要的是一无所知。全都凭借着内心的一腔热血就A了出去，却什么都没有考虑。随着这4年来认知和能力的提高，对当初这个“有作为”似乎开始有了一定的概念。这个概念越清楚，自己内心真正的源动力也就越发的澎湃，这一份力量是持久的，坚定的，最重要的是有明确的目标性的。18岁到25岁有7年的间隔，转眼间已经过去4年了，真的很可怕但是又觉得很幸运，至少自己是在21岁到22岁这个年龄之间开始有了一个新的觉悟，开始付出更多的实际行动。</p>
-<h2 id="接下来三年"><a href="#接下来三年" class="headerlink" title="接下来三年"></a>接下来三年</h2><p>很巧的是这几天挚友分享了一个在香港工作的程序猿（落拓）的一个视频，是录给30岁的他的（27岁今年），3年后恰好也是我对自己20到30岁之间划分的一个时间轴。看了他一天的生活是着实的羡慕同时也发觉到了自己的一些问题，接下来这3年要让自己的生活节奏变得更加的可控和更加的规律。还有很多很多的技能点需要点呀，接下来的时间里要更加的努力，偷懒只会让自己一次次的得过且过，时间就是这样溜走的。</p>
-<p>说到落拓的生活，多展开说一点点吧，就一点点。曾经的我觉得在一个小一点的公寓里住是一件非常舒服惬意的事情，一个完全自己的世界，就好像为什么很想开始自己写自己的博客一样，在这里，我就是这里的主人。但是我又是一个比较另类的存在，内心又同时向往着一个一房二人的生活，这里不特指伴侣，用一句俗话来说就是有福同享有难同当，有类似的爱好，这样生活所带来的了就不仅仅是两份的快乐，一加一就会大于一。</p>
-<p>不多bb了，千言万语汇成一句话：要更好更优秀。加油。</p>
+        <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>单例设计模式主要目的就是全局有且只有一个该对象，这个是唯一的，可以全局调用，比如 Logger 就是这样的存在。下面简单用三种方式来实现，这部分笔记慢慢补充起来。</p>
+<p><strong>第一种实现，饿汉式（开发用）：</strong></p>
+<pre><code class="java">public void main(String[] args) {
+    Singleton s = Singleton.getInstance();
+}
+
+class Singleton() {
+    // 在类中直接创建好对象
+    private Singleton s = new Singleton();
+    // 私有构造函数，禁止外部创造该对象
+    private Singleton() {};
+    // 提供 accessor
+    public static Singleton getInstance() {
+        return s;
+    }
+}</code></pre>
+<p><strong>第二种，懒汉式：</strong></p>
+<pre><code class="java">public void main(String[] args) {
+    Singleton s = Singleton.getInstance();
+}
+
+class Singleton() {
+    // 声明
+    private Singleton s;
+    // 私有构造函数，禁止外部创造该对象
+    private Singleton() {};
+    // 提供 accessor
+    public static Singleton getInstance() {
+        if (s == null) {
+            // 这里有线程隐患，从而产生两次对象
+            s = new Singleton();
+        }
+        return s;
+    }
+}</code></pre>
+<p><strong>第三种，作为了解：</strong></p>
+<pre><code class="java">public void main(String[] args) {
+    Singleton s = Singleton.getInstance();
+}
+
+class Singleton() {
+    // 在这里即使 public 修饰了，但是也没办法修改它
+    public static final Singleton s = new Singleton();
+    // 私有构造函数，禁止外部创造该对象
+    private Singleton() {};
+}</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
@@ -461,7 +507,7 @@
 
 <script>
     var gitment = new Gitment({
-        id: 'http://yoursite.com/2019/10/04/%E6%B2%A1%E6%83%B3%E5%88%B0%E6%88%91%E4%B9%9F%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%BA%86/', // 可选。默认为 location.href
+        id: 'http://yoursite.com/2020/06/10/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/', // 可选。默认为 location.href
         owner: 'BlckKn1fe',
         repo: 'gitment-saving',
         oauth: {

@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Java Note P5 (黑马程序员) | 黑刀的个人博客</title>
+  <meta name="keywords" content=" Java , Note ">
+  <meta name="description" content="Java Note P5 (黑马程序员) | 黑刀的个人博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="用 Java 实现了一个极其简陋的 UDP 通讯，内容全部来源于 Java Note P5 黑马程序员 import java.awt.*; import java.awt.event.*; import java.io.*; import java.net.*; import java.text.SimpleDateFormat; import java.util.*;  class MyFra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UDP简单聊天">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/UDP%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9/index.html">
+<meta property="og:site_name" content="黑刀的个人博客">
+<meta property="og:description" content="用 Java 实现了一个极其简陋的 UDP 通讯，内容全部来源于 Java Note P5 黑马程序员 import java.awt.*; import java.awt.event.*; import java.io.*; import java.net.*; import java.text.SimpleDateFormat; import java.util.*;  class MyFra">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-12T08:16:04.000Z">
+<meta property="article:modified_time" content="2020-06-12T10:14:44.318Z">
+<meta property="article:author" content="黑刀">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="UDP">
+<meta property="article:tag" content="网络协议">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.0.1" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>黑刀</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/BlckKn1fe" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:lding1003@gmail.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=553658519&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=121733025" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(10)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Java">Java<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Life">Life<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="设计模式">设计模式<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="网络协议">网络协议<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="10">
+<input type="hidden" id="yelog_site_word_count" value="38.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://flowermushroom.github.io">花蘑菇</a></li>
+            
+            <li><a target="_blank" href="https://www.yeliulee.com/">琉璃</a></li>
+            
+            <li><a target="_blank" href="https://www.cnblogs.com/nightrainlemon">夜雨柠檬</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JVM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Note</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>UDP</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 网络协议 "
+           href="/2020/06/12/UDP%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9/"
+           data-tag="Java,UDP,网络协议"
+           data-author="" >
+            <span class="post-title" title="UDP简单聊天">UDP简单聊天</span>
+            <span class="post-date" title="2020-06-12 16:16:04">2020/06/12</span>
+        </a>
+        
+        <a  class="全部文章 设计模式 "
+           href="/2020/06/10/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/"
+           data-tag="Note,设计模式"
+           data-author="" >
+            <span class="post-title" title="单例设计模式（Singleton）">单例设计模式（Singleton）</span>
+            <span class="post-date" title="2020-06-10 16:40:22">2020/06/10</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2020/06/07/JVM%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="Java,Note,JVM"
+           data-author="" >
+            <span class="post-title" title="JVM基本原理">JVM基本原理</span>
+            <span class="post-date" title="2020-06-07 08:25:43">2020/06/07</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2020/05/26/HTML%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"
+           data-tag="前端,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML基础笔记">HTML基础笔记</span>
+            <span class="post-date" title="2020-05-26 03:16:36">2020/05/26</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2020/05/21/Java-Note-P5-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P5 (黑马程序员)">Java Note P5 (黑马程序员)</span>
+            <span class="post-date" title="2020-05-21 19:57:31">2020/05/21</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2020/03/05/Java-Note-P4-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P4 (黑马程序员)">Java Note P4 (黑马程序员)</span>
+            <span class="post-date" title="2020-03-05 17:40:06">2020/03/05</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2019/11/18/Java-Note-P3-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P3 (黑马程序员)">Java Note P3 (黑马程序员)</span>
+            <span class="post-date" title="2019-11-18 12:43:23">2019/11/18</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2019/10/15/Java-Note-P2-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P2 (黑马程序员）">Java Note P2 (黑马程序员）</span>
+            <span class="post-date" title="2019-10-15 23:39:14">2019/10/15</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2019/10/09/Java-Note-P1-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+           data-tag="Java,Note"
+           data-author="" >
+            <span class="post-title" title="Java Note P1 (黑马程序员)">Java Note P1 (黑马程序员)</span>
+            <span class="post-date" title="2019-10-09 00:33:50">2019/10/09</span>
+        </a>
+        
+        <a  class="全部文章 Life "
+           href="/2019/10/04/%E6%B2%A1%E6%83%B3%E5%88%B0%E6%88%91%E4%B9%9F%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%BA%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="没想到我也二十二了">没想到我也二十二了</span>
+            <span class="post-date" title="2019-10-04 00:16:35">2019/10/04</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Java-Note-P5-黑马程序员" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Java Note P5 (黑马程序员)</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+            <a class="color5">Note</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-06-12 18:14:44'>2020-05-21 19:57</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:7.2k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#I-O流"><span class="toc-text">I&#x2F;O流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小数组拷贝"><span class="toc-text">小数组拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedReader-Writer"><span class="toc-text">BufferedReader &#x2F; Writer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LineNumberReader"><span class="toc-text">LineNumberReader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用指定码表读写"><span class="toc-text">使用指定码表读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取文本中每一个字符出现的次数"><span class="toc-text">获取文本中每一个字符出现的次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#序列流（SequenceInputStream）"><span class="toc-text">序列流（SequenceInputStream）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ByteArrayOutputStream"><span class="toc-text">ByteArrayOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机流（RandomAccessFile）"><span class="toc-text">随机流（RandomAccessFile）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ObjectOutput-InputStream"><span class="toc-text">ObjectOutput&#x2F;InputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据输入输出流"><span class="toc-text">数据输入输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印流"><span class="toc-text">打印流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置标准输入输出流"><span class="toc-text">设置标准输入输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Properties"><span class="toc-text">Properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制文件夹练习"><span class="toc-text">复制文件夹练习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名内部类实现"><span class="toc-text">匿名内部类实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#睡眠"><span class="toc-text">睡眠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守护线程"><span class="toc-text">守护线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加入线程"><span class="toc-text">加入线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#礼让线程"><span class="toc-text">礼让线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程优先级"><span class="toc-text">线程优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步"><span class="toc-text">同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#火车票举例"><span class="toc-text">火车票举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#死锁"><span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程安全-不安全的类"><span class="toc-text">线程安全&#x2F;不安全的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime类"><span class="toc-text">Runtime类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Timer"><span class="toc-text">Timer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个-多个线程的通讯"><span class="toc-text">两个&#x2F;多个线程的通讯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程通信注意事项"><span class="toc-text">线程通信注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ReentrantLock-和-Condition"><span class="toc-text">ReentrantLock 和 Condition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程组"><span class="toc-text">线程组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池"><span class="toc-text">线程池</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GUI"><span class="toc-text">GUI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#监听"><span class="toc-text">监听</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络编程"><span class="toc-text">网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP传输"><span class="toc-text">UDP传输</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>笔记内容全部来源于 <a href="https://www.bilibili.com/video/BV17W411a764" target="_blank" rel="noopener">https://www.bilibili.com/video/BV17W411a764</a> </p>
+</blockquote>
+<h1 id="I-O流"><a href="#I-O流" class="headerlink" title="I/O流"></a>I/O流</h1><p>先介绍了 FileReader，大概的使用方法和 FileInputStream 那面基本是一样的，越是要写路径，也有 read 方法。字符流之所异能读到中文，是有GBK码表的支持。中文的第一个字节，一定是负数，那么在读的时候，如果碰到负，则一次读两个字节，这样保证中文的读取不会发生字节流那面缺码的情况。FileReader 在读到每一个字符的字节之后，可以通过 char 强转来得到内容。</p>
+<p>FileReader 注意一定一定注意闭流，因为最上层的父类在读字节的时候也是用一个 byte 数组实现的，如果不 close 的话，内容写不出来。一般字符流更多的使用在只读或者只写的情况中，因为如果是拷贝的话，效率不是很快，虽然可以这么操作但是不推荐。</p>
+<p>字符流只能拷贝纯文本，音频图片这样的文件格式是不能拿来用的，因为在读的时候，虽然能读到每一个字节，但是字节不一定能去码表中找到对应的字符，在写出去的时候就会出现数据缺失导致文件损坏的情况。</p>
+<h3 id="小数组拷贝"><a href="#小数组拷贝" class="headerlink" title="小数组拷贝"></a>小数组拷贝</h3><p>这里这个小数组的用法和字节流那面一样，多写一遍加深印象</p>
+<pre><code class="java">public static void main(String[] args) {
+    FileReader fr = new FileReader(&quot;xxx.txt&quot;);
+    FileWriter fw = new FileWriter(&quot;yyy.txt&quot;);
+
+    char[] arr = new char[1024];
+    int len; // 这个 len 表示读到的这个 char 数组里的有效字节数
+    while ((len = fr.read(arr)) != -1) {
+        fw.write(arr, 0, len);  // 从第 0 位读 len 个
+    }
+
+    fw.close();
+    fr.close();
+}</code></pre>
+<h3 id="BufferedReader-Writer"><a href="#BufferedReader-Writer" class="headerlink" title="BufferedReader / Writer"></a>BufferedReader / Writer</h3><p>（和字节流那面基本用法是一样的，byte 数组大小 8192）</p>
+<p>这里有两个比较好用的方法，一个是 readLine() 一个是 newLine()，具体用法：</p>
+<p><strong>（读）readLine()</strong></p>
+<pre><code class="java">public static void main(String[] args) {
+    BufferedReader br = new BufferedReader(new FileReader(&quot;zzz.txt&quot;));
+    String line;
+
+    while ((line = br.readLine()) != null) {
+        System.out.println(line); // 这里如果不加 ln 则全部一整行输出
+    }
+    br.close();
+}</code></pre>
+<p>readLine() 方法读一整行，直到碰到 ‘\n’ 或者 ‘\r’ 为止，且  ‘\n’ 和 ‘\r’ 不会读过来，所以再输出的时候如果不加 ln 的话就会全都输出在一行。</p>
+<p><strong>（写）newLine()</strong></p>
+<p>这是个适配全平台的方法，不同平台下的换行操作符不一样。</p>
+<pre><code class="java">public static void main(String[] args) {
+    BufferedReader br = new BufferedReader(new FileReader(&quot;zzz.txt&quot;));
+    BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;copy.txt&quot;));
+    String line;
+
+    while ((line = br.readLine()) != null) {
+        bw.write(line);
+        bw.newLine();  // 这里会在结尾处写上一个换行操作符
+    }
+    br.close();
+}</code></pre>
+<p><strong>在用流的时候注意事项：尽可能的做到 ”晚开早关“ ，什么时候用什么时候快，用完尽快关。</strong></p>
+<h3 id="LineNumberReader"><a href="#LineNumberReader" class="headerlink" title="LineNumberReader"></a>LineNumberReader</h3><p>它继承了 BufferedReader，同时加了一个行号功能，可以知道目前读到了哪一行，也可以规定从规定的某一行开始往下读。</p>
+<pre><code class="java">public static void main(String[] args) {
+    LineNumberReader lnr = new LineNumberReader(new FileReader(&quot;zzz.txt&quot;));
+    String line;
+    lnr.setLineNumber(100);
+    while((line = lnr.readLine()) != null) {
+         System.out.println(lnr.getLineNymber() + &quot; : &quot; + line);
+    }
+    lnr.close();
+}</code></pre>
+<h3 id="使用指定码表读写"><a href="#使用指定码表读写" class="headerlink" title="使用指定码表读写"></a>使用指定码表读写</h3><pre><code class="java">BufferedReader br = 
+    new BufferedReader(new InputStreamReader(new FileInputStream(&quot;utf-8.txt&quot;, &quot;utf-8&quot;)));
+BufferedWriter bw = 
+    new BufferedWriter(new OutStreamReader(new FileOutStream(&quot;gbk.txt&quot;, &quot;gbk&quot;)));</code></pre>
+<p>图解：</p>
+<p><img src="https://raw.githubusercontent.com/BlckKn1fe/guanyu-pictures/master/images/20200523025505.png" alt=""></p>
+<h3 id="获取文本中每一个字符出现的次数"><a href="#获取文本中每一个字符出现的次数" class="headerlink" title="获取文本中每一个字符出现的次数"></a>获取文本中每一个字符出现的次数</h3><pre><code class="java">public static void main(String[] args) {
+    // 1. 创建带缓冲的输入流对象
+    BufferedReader br = new BufferedReader(new FileReader(&quot;zzz.txt&quot;));
+    // 2. 创建双列集合对象
+    TreeMap&lt;Character, Integer&gt; tm = new TreeMap&lt;&gt;();
+    // 3. 将读到的存到双列集合中并且根据情况进行判断
+    int ch;  // 这个 ch 得到的是每一个字节对应的码
+    while ((ch = br.read()) != -1) {
+        char c = (char)ch;  // 这一步把刚才得到的 ch 根据码表进行强转
+        tm.put(c, !tm.containsKey(c) ? 1 : tm.get(c) + 1);
+    }
+    // 关流
+    br.close();
+
+    for (Character key : tm.keySet()) {
+        switch (key) {
+            case &#39;\t&#39;:
+                bw.write(&quot;\\t&quot; + &quot; = &quot; + tm.get(key));
+                break;
+            case &#39;\n&#39;:
+                bw.write(&quot;\\n&quot; + &quot; = &quot; + tm.get(key));
+                break;
+            case &#39;\r&#39;:
+                bw.write(&quot;\\r&quot; + &quot; = &quot; + tm.get(key));
+                break;
+            default:
+                bw.write(key + &quot; = &quot; + tm.get(key));
+                break;
+        }
+        bw.newLine();
+    }
+}</code></pre>
+<h3 id="序列流（SequenceInputStream）"><a href="#序列流（SequenceInputStream）" class="headerlink" title="序列流（SequenceInputStream）"></a>序列流（SequenceInputStream）</h3><p>它可以把两个 InputStream 合在一起，先从第一个流开始读，之后读第二个，在调用 close 方法的时候会把两个流正常关闭，不用担心这个问题。</p>
+<pre><code class="java">public static void main(String[] args) {
+    FileInputStream fis1 = new FileInputStream(&quot;a.txt&quot;);
+    FileInputStream fis2 = new FileInputStream(&quot;b.txt&quot;);
+    SequenceInputStream sis = new SequenceInputStream(fis1, fis2);
+    FileOutputStream fos = new FileOutputStream(&quot;c.txt&quot;);
+
+    int b;
+    while ((b = sis.read()) != -1) {
+        fos.write(b);
+    }
+
+    sis.close();
+    fos.close();
+}</code></pre>
+<p>当多个流合并的时候，可以用 Vector 来存每一个输入流对象，然后调用 Vector 里的 element 方法会返回一个枚举对象，把这个对象传给序列流作参，就可以实现多个流拼接。</p>
+<h3 id="ByteArrayOutputStream"><a href="#ByteArrayOutputStream" class="headerlink" title="ByteArrayOutputStream"></a>ByteArrayOutputStream</h3><p>这个其实就是把读过来的一些东西，暂时写在内存里的一小块缓冲区里，在 write 的时候不是向硬盘中写出数据，而是存在自己的一块缓冲区里，且这个缓冲区满了之后会自己扩容。</p>
+<pre><code class="java">public static void main(String[] args) {
+    FileInputStream fis = new FileInputStream(&quot;a.txt&quot;);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+    int b;
+    while ((b = fis.read()) != -1) {
+        baos.write(b);  // 这里是向缓冲区里写入内容
+    }
+
+    byte[] arr = baos.toByteArray();  // 这个可以改变码表
+    System.out.println(new String(arr));
+
+    System.out.println(baos.toString());  // 这里使用的是平台默认码表
+    fis.close();
+
+    // 注意: bos.close() 可以不写，因为根本没有流通道到硬盘上；内存会自动释放
+
+}</code></pre>
+<h3 id="随机流（RandomAccessFile）"><a href="#随机流（RandomAccessFile）" class="headerlink" title="随机流（RandomAccessFile）"></a>随机流（RandomAccessFile）</h3><p>这东西可以规定在特定的某一个位置去读和写，在关联某一个文件的时候，要再第二个参数设置 mode，分别有 “r”, “rw”, “rws”, 和 “rwd” 四个模式。</p>
+<pre><code class="java">public static void main(String[] args) {
+    RandomAccessFile raf = new RandomAccessFile(&quot;a.txt&quot;, &quot;rw&quot;);
+    raf.write(97);
+    int x = raf.read();
+    raf.seek(10);  // 把指针指到index为 10 的位置
+    raf.write(98);
+    raf.close();
+}</code></pre>
+<p>这个可以应用在多线程下载上，在一个文件的不同位置开启新的线程。</p>
+<h3 id="ObjectOutput-InputStream"><a href="#ObjectOutput-InputStream" class="headerlink" title="ObjectOutput/InputStream"></a>ObjectOutput/InputStream</h3><p>这里先引入一个概念叫序列化和反序列化，序列化就好比玩游戏的时候存档这样的操作，是按照某一种规则的写入。而反序列化，则是按照某一种规则读出。在 ObjectOutputStream 中，会把对象序列化，存储在一个文件中，方便下次读取该对象的信息。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Person p = new Person(&quot;张三&quot;, 23);
+
+    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;a.txt&quot;));
+    oos.writeObject(p);
+    oos.close();
+}</code></pre>
+<p>这里注意，要被序列化的对象的类，需要实现 Serializable 接口，该接口内无任何 method，它只是起到一个标签化的功能。切记一点，序列化的是一个对象当时的状态，当时的状态，当时的状态，所以牢记存档这个概念。它不是把类级别的内容序列化了。</p>
+<p>实现了 Serializable 接口的类注意要加入一个叫 serialVersionUID 的 field，这个东西主要是用来记录改类每次改变之后的版本号的。比如定义了一个Person 类，然后一开始只有 name 和 age 属性，version 为 1L；后来加了一个 gender 属性，version 就为 2L。</p>
+<pre><code class="java">private static final long serialVersionUDI = 1L;</code></pre>
+<p>在读回对象的时候，注意要强转会所需的类型，而且要注意一个问题，如果只是单纯写好几个对象的话，在读的时候是没办法确定到底写了多少个对象的。所以我们可以考虑用一个容器把我们想写的对象都装进去，然后把这个容器对象写出去。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Person p1 = new Person(&quot;张三&quot;, 23);
+    Person p2 = new Person(&quot;李四&quot;, 24);
+    ArrayList&lt;Person&gt; arr = new ArrayList&lt;&gt;();
+    arr.add(p1);
+    arr.add(p2);
+
+    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;a.txt&quot;));
+    oos.writeObject(arr);
+    oos.close();
+
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;a.txt&quot;));
+    ArrayList&lt;Person&gt; result = (ArrayList&lt;Person&gt;)ois.readObject();
+    ois.close();
+}</code></pre>
+<p>以上，就可以读取到装 Person 对象的 ArrayList 容器，只需要对其遍历即可。</p>
+<h3 id="数据输入输出流"><a href="#数据输入输出流" class="headerlink" title="数据输入输出流"></a>数据输入输出流</h3><p>DataInput/OutputStream 是可以一次写更多的字节，比如在 FileOutputStream 中写一个 fos.write(997) 的时候，他会把 997 转成二进制形式，然后用补足到 32 位，往外写的之后只取最后八位，所以就会额外砍掉两个，导致读回来的时候不是 997 的这个数了。这时候就可以用 DateInput/OutputStream 来实现这个</p>
+<pre><code class="java">dos.writeInt(997);
+dis.readInt();</code></pre>
+<h3 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h3><p>这里说两个，一个是 PrintStream，一个是 PrintWriter。 PrintStream 其实就是 System.out 这个东西，实在很对控制台而言的，不仅有 println 等方法，也有 write 的方法；println 等一些列方法打印出去的是字符串，而 write 实际是去查表，然后把内容显示出来，PrintStream 打印的是字节楼。PrintWriter 的话，也是把一些信息 print 到一个文件当中，比如可以调用其 println 方法和 write 方法；PrintWriter 在构造函数中，其中一个可以传入一个叫 autoFlush 的参数，这个参数仅仅是针对 println 方法而言的，如果是 true 的话，每调用一次 println，那么就会把缓冲区的内容写出去并清空，调用其他的方法不起作用，所以还是要记得关流!!!</p>
+<p><strong>这两个都是往外输出的一个过程，只操作数据目的。</strong></p>
+<p><strong>PrintStream：</strong></p>
+<pre><code class="java">public static void main(String[] args) {
+    PrintStream ps = System.out;
+    ps.println(97);  // 底层通过 Integer.toString() 把97以字符串形式打印出来
+    ps.write(97);  // 查表了
+
+    Person p = new Person(&quot;Johnathon&quot;, 22);
+    ps.println(p);  // 判断是不是 null，是则输出 null，否则默认调用对象的 toString（）方法
+    ps.close();
+}</code></pre>
+<p><strong>PrintWriter：</strong></p>
+<pre><code class="java">public static void main(String[] args) {
+    PrintWriter pw = new PrintWriter(new FileOutputStream(&quot;a.txt&quot;), true);
+    pw.print(97);  // 这次 print 方法只是把内容写到了缓冲区中
+    pw.println(98);  // 因为 autoFlush 是true，在把内容写进缓冲区后进行 flush
+    pw.close();  // 记得关流!!!
+}</code></pre>
+<h3 id="设置标准输入输出流"><a href="#设置标准输入输出流" class="headerlink" title="设置标准输入输出流"></a>设置标准输入输出流</h3><p>可以更改 System.in 和 System.out</p>
+<pre><code class="java">public static void main(String[] args) throws IOException {
+        System.setIn(new FileInputStream(&quot;xxx.txt&quot;));
+        System.setOut(new PrintStream(&quot;copy.txt&quot;));
+
+        InputStream is = System.in;
+        PrintStream ps = System.out;
+
+        int b;
+        while ((b = is.read()) != -1) {
+            ps.write(b);  // 这里也可以用 println 方法，但是要注意 char 强转
+        }
+
+        is.close();
+        ps.close();
+
+    }</code></pre>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>它是个双列集合，一般都是用来存储配置文件的，没有对 key 和 value 的泛型规定，一般都是存 String的；继承了 HashTable 所以也可以当成一个 map 来使用，可以用 put 和 get 方法。</p>
+<p>Properties有它一些特有的方法，比如 setProperty 和 getProperty (其实效果和 put，get一样)，在便利的时候可以调用 propertyNames 的方法得到一个 Enumeration 的对象，然后对其遍历。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Properties prop = new Properties();
+    prop.setProperty(&quot;name&quot;, &quot;张三&quot;);
+    prop.setProperty(&quot;tel&quot;, &quot;12345678&quot;);
+
+    Enumeration&lt;String&gt; en = (Enumeration&lt;String&gt;) prop.propertyNames();
+    while (en.hasMoreElements()) {
+        String key = en.nextElement();
+        String value = prop.getProperty(key);
+        System.out.println(key + &quot; = &quot; + value);
+    }
+}</code></pre>
+<p>Properties 有 load 方法和 store 方法，读取一个文件中的配置信息，在通过 setProperty 的修改之后还可以再储存回去。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Properties prop = new Properties();
+    prop.load(new FileInputStream(&quot;config.properties&quot;));
+
+    prop.setProperty(&quot;tel&quot;, &quot;911&quot;);
+
+    prop.store(new FileOutputStream(&quot;config.properties&quot;), &quot;注释信息&quot;);
+}</code></pre>
+<h3 id="复制文件夹练习"><a href="#复制文件夹练习" class="headerlink" title="复制文件夹练习"></a>复制文件夹练习</h3><pre><code class="java">import java.io.*;
+import java.util.*;
+public class Test {
+    public static void main(String[] args) throws IOException {
+        File src = getDir();
+        File dest = getDir();
+        if (src.equals(dest)) {
+            System.out.println(&quot;The destination path is the subfile of the source file!&quot;);
+        }
+        else {
+            copy(src, dest);
+        }
+    }
+
+    public static File getDir() {
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            File  f = new File(sc.nextLine());
+            if (!f.exists()) {
+                System.out.println(&quot;该路径不存在&quot;);
+            }
+            else if (f.isFile()) {
+                System.out.println(&quot;这是一个文件&quot;);
+            }
+            else {
+                sc.close();
+                return f;
+            }
+        }
+    }
+
+    public static void copy(File src, File dest) throws IOException {
+        File newDir = new File(dest, src.getName());
+        newDir.mkdir();
+        File[] subFiles = src.listFiles();
+
+        for (File subFile : subFiles) {
+            if (subFile.isFile()) {
+                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(subFile));
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(newDir, subFile.getName())));
+                int b;
+                while ((b = bis.read()) != -1) {
+                    bos.write(b);
+                }
+                bis.close();
+                bos.close();
+            }
+            else {
+                copy(subFile, newDir);
+            }
+        }
+    }
+}
+</code></pre>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>一个线程就是程序执行的一条路径，一个进程中可以包含多条线程。多线程并发执行可以提高程序的效率，比如一个单核 CPU 去执行多个应用程序，并发就会发生。以下图为例，CPU 会在三者之间快速的切换，由于其运算速度执行效率之快，使用中是无法觉察出来的，这就是一种并发。</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200606160326349.png" alt="image-20200606160326349"></p>
+<p>和并发有一个很相近的词叫并行，举个例子，比如左手用一个电脑和 A 聊天，右手也操作一个电脑和 B 聊天，这就是并行；并发的话就是在一个电脑上，一会和 A 聊，一会和 B 聊。</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200611130336019.png" alt="image-20200611130336019"></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><strong>方法一：</strong>继承 Thread 类，然后重写 run 方法，调用 start 方法来开启新的线程。</p>
+<pre><code class="java">public static void main(String[] args) {
+    MyThread mt = new MyThread();
+    mt.start();
+}
+
+class MyThread extends Thread {
+    public void run() {
+        // code...
+    }
+}</code></pre>
+<p><strong>方法二：</strong>创造一个自定义类，实现 Runnable 接口，重写 run 方法，然后在创建 Thread 实例对象的时候，该自定义类实例对象作为参数传给 Thread 的构造函数。Thread 类中有一个成员变量，是用 Runnable 接的，叫 target，这个对象最后就赋给那个成员变量了。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Thread t = new Thread(new MyRunnable());
+    t.start();
+}
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        // code...
+    }
+}</code></pre>
+<p>这俩方法各有利弊，一个简单一点一个复杂一点。前者在调用 start 之后是直接去找子类中的 run 方法，而后者需要判断该对象是不是为 null。第一个方法有一个弊端，若该类已经有父类的情况下，则不能继承 Thread 了，所以在这种情况下才考虑第二个方法。第一个方法可以直接调用到 Thread 中的方法，第二种的话虽然扩展性好，但是代码复杂度会提高。</p>
+<p>当用 Runnable 来实现的时候，还想调用该线程的方法的时候，可以通过  <code>Thread.currentThread()</code> 来获取当前的线程；该方法可以用在每一个线程当中来获取当前线程。</p>
+<h2 id="匿名内部类实现"><a href="#匿名内部类实现" class="headerlink" title="匿名内部类实现"></a>匿名内部类实现</h2><p>作为了解知道即可</p>
+<pre><code class="java">public static void main(String[] args) {
+    new Thread() {
+        public void run() {
+            // code...
+        }
+    }
+
+    new Thread(new Runnable() {
+        public void run() {
+            //code...
+        }
+    }).start();
+}</code></pre>
+<h2 id="睡眠"><a href="#睡眠" class="headerlink" title="睡眠"></a>睡眠</h2><p>sleep 方法是 Thread 类中的一个 static 方法，可以直接通过类名.调用。一般都用毫秒来作为参数，去规定这条线程睡眠多久，也可以传第二个参数，其为纳秒，但是 Win 对其支持的不好。1秒 = 1000 毫秒。</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    for (int i = 20; i &gt;= 0; i--) {
+        Thread.sleep(1000);
+        System.out.println(&quot;倒计时第 &quot; + i + &quot; 秒&quot;);
+    }
+}</code></pre>
+<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><p>守护线程 daemon，也可以叫做后台程序。其会随着非守护线程的结束而结束，它 ”守护“ 的线程都挂掉了，它还守护个锤子，自然就也会终止。</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Thread t1 = new Thread() {
+        public void run() {
+            // code..
+        }
+    };
+
+    Thread t2 = new Thread() {
+        public void run() {
+            // code..
+        }
+    };
+
+    t2.setDaemon(true);
+    t1.start();
+    t2.start();
+}</code></pre>
+<h2 id="加入线程"><a href="#加入线程" class="headerlink" title="加入线程"></a>加入线程</h2><p>简单来说就是插队，通过 join 方法来插队执行，而且可以设置插队多久。</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Thread t1 = new Thread() {
+        public void run() {
+            for (int i = 0; i &lt; 10; i++) {
+                System.out.println(getName() + &quot;...aa&quot;);
+            }
+        }
+    };
+
+    Thread t2 = new Thread() {
+        public void run() {
+            for (int i = 0; i &lt; 10; i++) {
+                if (i == 2) {
+                    try {
+                        t1.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(getName() + &quot;...bb&quot;);
+            }
+
+        }
+    };
+
+    t1.start();
+    t2.start();
+}</code></pre>
+<h2 id="礼让线程"><a href="#礼让线程" class="headerlink" title="礼让线程"></a>礼让线程</h2><p>这东西没啥效果，主要就是告诉 scheduler 这条线程愿意去 yield，给出占用的 cpu 资源，但是让不让不好说，看脸，作为了解知道就可以。（以后有深入应用或者了解再来补）</p>
+<h2 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h2><p>线程的默认优先级是0，最小为1，最大为10，优先级越高的，优先处理，反之慢一点处理，效果一般明显。</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Thread t1 = new Thread() {
+        public void run() {
+            for (int i = 0; i &lt; 100; i++) {
+                System.out.println(getName() + &quot;...aa&quot;);
+            }
+        }
+    };
+
+    Thread t2 = new Thread() {
+        public void run() {
+            for (int i = 0; i &lt; 100; i++) {
+                System.out.println(getName() + &quot;...bb&quot;);
+            }
+
+        }
+    };
+
+    t2.setPriority(Thread.MAX_PRIORITY);
+    t1.setPriority(Thread.MIN_PRIORITY);
+
+    t1.start();
+    t2.start();
+}</code></pre>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>先上代码在加说明：</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Printer p = new Printer();
+    // 第一个线程无限调用 p.print1()
+    Thread t1 = new Thread() {
+        public void run() {
+            while (true) {
+                p.print1();
+            }
+        }
+    };
+    // 第二个线程无限调用 p.print2()
+    Thread t2 = new Thread() {
+        public void run() {
+            while (true) {
+                p.print2();
+            }
+        }
+    };
+
+    t1.start();
+    t2.start();
+}
+
+class Printer {
+    public void print1() {
+        System.out.print(&quot;黑&quot;);
+        System.out.print(&quot;马&quot;);
+        System.out.print(&quot;程&quot;);
+        System.out.print(&quot;序&quot;);
+        System.out.print(&quot;员&quot;);
+        System.out.print(&quot;\r\n&quot;);
+    }
+
+    public void print2() {
+        System.out.print(&quot;传&quot;);
+        System.out.print(&quot;智&quot;);
+        System.out.print(&quot;播&quot;);
+        System.out.print(&quot;客&quot;);
+        System.out.print(&quot;\r\n&quot;);
+    }
+}</code></pre>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200607062208759.png" alt="image-20200607062208759"></p>
+<p>输出结果会出现这样的错位的情况，这是因为在并发的过程中，会出现资源抢夺的情况，比如以上的输出中，输出 <code>马</code> 字之后，资源就被第二条线程抢过去用了，然后在输出完第一个 <code>传</code> 字之后，又被第一条线程抢过去了。所以避免这种代码无法执行完整的情况发生，需要使用同步代码块，引入 <code>synchronized</code> 关键字</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Object o = new Object();
+    synchronized(o) {
+        // code...
+    }
+}</code></pre>
+<p>使用 <code>synchronized</code> 要注意，它需要统一一把锁，比如在两块代码块之间来回切换的过程中，需要指定同一把锁，让 A 和 B呈现互斥关系。</p>
+<p>同步还可以在方法上进行 <code>synchronized</code> 关键字修饰，可以给非静态方法和静态方法添加该关键字；当方法为非静态方法的时候，锁对象为该对象，则为 <code>this</code> ；而当静态方法被该关键字修饰的时候，锁对象为字节码对象，比如该类名为 <code>Demo</code> ，那么该锁对象就是 <code>Demo.class</code> </p>
+<p><strong>非静态方法：</strong></p>
+<pre><code class="java">class Printer {
+    Object o = new Object();
+
+    public synchronized void  print1() {
+        // code...
+    }
+
+    public void print2() {
+        synchronized (this) {
+            // code...
+        }
+
+    }
+}</code></pre>
+<p><strong>静态方法：</strong></p>
+<pre><code class="java">class Printer {
+    Object o = new Object();
+
+    public static synchronized void  print1() {
+        // code...
+    }
+
+    public void print2() {
+        synchronized (Printer.class) {
+            // code...
+        }
+
+    }
+}</code></pre>
+<h2 id="火车票举例"><a href="#火车票举例" class="headerlink" title="火车票举例"></a>火车票举例</h2><p>线程安全和线程不安全，如果对同一个数据进行操作，就可能出现线程上的不安全，比如卖票，一共就100张，规定在一个条件下售空，但是如果是多线程来操作的话，很可能就会出现条件越界，比如其中一个线程在输出语句的时候另一个输出语句对票数进行了修改，那么一开始这个线程去回去判断条件的时候就可能会出现不 break 的情况，导致超卖，下面是一段正确的代码</p>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        MyTicket mt = new MyTicket();
+        new Thread(mt).start();
+        new Thread(mt).start();
+        new Thread(mt).start();
+        new Thread(mt).start();
+    }
+}
+
+class MyTicket implements Runnable {
+    private int tickets = 100;
+
+    @Override
+    public void run() {
+        while (true) {
+            synchronized (this) {
+                if (tickets &lt;= 0) {
+                    break;
+                }
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName() + &quot;...这是第 &quot; + tickets-- + &quot; 号票&quot;);
+            }
+        }
+    }
+}</code></pre>
+<p>以上，这个锁对象是可以用 this 的，因为用 Thread 开启线程的时候，传入的都是同一个对象。如果不用 Runnable 接口实现，通过继承来实现的话，那么需要注意这个锁对象要么是字节码对象，要么就是静态成员对象。</p>
+<p>​       </p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>死锁出现的情况主要出现在 <code>synchronized</code> 嵌套中，当两个线程执行一个 <code>synchronized</code> 嵌套的代码块的时候，会出现其中一个线程占用一把锁，另一个线程也占有一个，然后在想要继续往下执行的时候，都被卡死了</p>
+<pre><code class="java">public static void main(String[] args) {
+    new Thread() {
+        public void run() {
+            while (true) {
+                synchronized (s1) {
+                    System.out.println(getName() + &quot;...获取&quot; + s1 + &quot;等待&quot; + s2);
+                    synchronized (s2) {
+                        System.out.println(getName() + &quot;...获取&quot; + s2 + &quot;等待&quot; + s1);
+                    }
+                }
+            }
+        }
+    }.start();
+
+    new Thread() {
+        public void run() {
+            while (true) {
+                synchronized (s2) {
+                    System.out.println(getName() + &quot;...获取&quot; + s1 + &quot;等待&quot; + s2);
+                    synchronized (s1) {
+                        System.out.println(getName() + &quot;...获取&quot; + s2 + &quot;等待&quot; + s1);
+                    }
+                }
+            }
+        }
+    }.start();
+}</code></pre>
+<p>上面这段代码就会出现死锁的情况，在第一个线程在执行到第二个锁的时候，如果被第二个线程抢过去了，那么第二个线程就会开始执行，s2被占用，注意此时s1是被第一个线程占用的，所以执行一条之后也会卡主，这时候想回第一个线程继续执行也不行，因为s2被占用。</p>
+<h2 id="线程安全-不安全的类"><a href="#线程安全-不安全的类" class="headerlink" title="线程安全/不安全的类"></a>线程安全/不安全的类</h2><p>通过源码可以知道，Vector，StringBuffer，HashTable 都是线程安全的，而相对应的 ArrayList，StringBuilder，HashMap 是线程不安全的；前三者在进行添加操作的时候都有 <code>synchronized</code> 关键字修饰，后三者没有。</p>
+<p>还有一个办法可以让后面三个线程不安全的变成线程安全的，通过 Collections 中的 <code>Collections.synchronizedXXX()</code> 来实现线程安全。</p>
+<h2 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h2><p>这个类就是用单例设计模式做的，暂时作为了解，其中一个方法可以直接执行本地终端。</p>
+<h2 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h2><p>这个类有点像闹钟的感觉，它可以计划在具体某个时间里执行什么任务。这里还要提到一个 TimerTask 类，这个就是用来创建具体要执行什么任务用的，先创造自己的任务类，继承 TimerTask，然后重写 run 方法，在用 Timer schedule 任务的时候，最为参数传入。</p>
+<pre><code class="java">public static void main(String[] args) throws InterruptedException {
+    Timer t = new Timer();
+    t.schedule(new MyTimerTask(), new Date(188, 6, 14, 20, 30));
+
+    while (true) {
+        Thread.sleep(1000);
+        System.out.println(new Date());
+    }
+}
+
+class MyTimerTask extends TimerTask {
+    @Override
+    public void run() {
+        System.out.println(&quot;背单词了！&quot;);
+    }
+}</code></pre>
+<h2 id="两个-多个线程的通讯"><a href="#两个-多个线程的通讯" class="headerlink" title="两个/多个线程的通讯"></a>两个/多个线程的通讯</h2><p>通过 wait 和 notify 方法，可以让两个线程之间实现某种程度上的 ”互动“，wait 在没有接收到 notify 之前，线程会一直处于暂停的状态，下面给一个案例：</p>
+<pre><code class="java">class Printer {
+    private int flag = 1;
+    public void print1() throws InterruptedException {
+        synchronized(this) {
+            if (flag != 1) {
+                this.wait();
+            }
+            System.out.println(&quot;线程1&quot;);
+            flag = 2;
+            this.notify();
+        }
+    }
+
+    public void print2() throws InterruptedException {
+        synchronized(this) {
+            if (flag != 2) {
+                this.wait();
+            }
+            System.out.println(&quot;线程2&quot;);
+            flag = 1;
+            this.notify();
+        }
+    }
+}</code></pre>
+<p>在通过 flag 来限定特定的线程运行，其他的线程暂停。在这里注意一下，一旦线程的运行权回来之后，它会继 if 语句之后继续执行，而不是再次判断这个 flag 符不符合条件，这个只能用在两个线程的通信上。还有一个方法叫 notifyAll 的，可以用这个实现多线程之间的通信，需要修改的第一个地方就是 if 的判断改成 while 的判断，因为当出现多个线程的时候，一旦调用 notifyAll 之后，有一些线程会被反复的唤醒，然后判断，这个就需要用 while 一遍遍的判断，直到满足条件才可以继续运行</p>
+<pre><code class="java">class Printer {
+    private int flag = 1;
+    public void print1() throws InterruptedException {
+        synchronized(this) {
+            while (flag != 1) {
+                this.wait();
+            }
+            System.out.println(&quot;线程1&quot;);
+            flag = 2;
+            this.notifyAll();
+        }
+    }
+
+    public void print2() throws InterruptedException {
+        synchronized(this) {
+            while (flag != 2) {
+                this.wait();
+            }
+            System.out.println(&quot;线程2&quot;);
+            flag = 3;
+            this.notifyAll();
+        }
+    }
+
+    public void print3() throws InterruptedException {
+        synchronized(this) {
+            while (flag != 3) {
+                this.wait();
+            }
+            System.out.println(&quot;线程3&quot;);
+            flag = 1;
+            this.notifyAll();
+        }
+    }
+}</code></pre>
+<h2 id="线程通信注意事项"><a href="#线程通信注意事项" class="headerlink" title="线程通信注意事项"></a>线程通信注意事项</h2><ol>
+<li>同步代码块中，调用 wait 方法的是锁对象</li>
+<li>因为锁可以为任意对象，所以 Object 类中有 wait 和 notify 的方法</li>
+<li>sleep 只是短暂的休眠，其并不会释放锁；而 wait 方法是直接进入等待状态，让出锁。wait 方法可以传参，如果传参的话其使用和 sleep 相似，到时间之后如果锁没有被其他线程占用，则会继续执行，一般用的多的是无参的用法。</li>
+</ol>
+<h2 id="ReentrantLock-和-Condition"><a href="#ReentrantLock-和-Condition" class="headerlink" title="ReentrantLock 和 Condition"></a>ReentrantLock 和 Condition</h2><p>ReetrantLock 为 JDK 1.5 引入的新特性，其用法和 synchronized 语句有点像，也可以实现代码块的同步，通过 lock 和 unlock 方法来实现。Condition 的话有点像信号发射器一样，由 ReentrantLock 示例调用 newCondition 来得到。通过 Condition 可以单一定向决定哪个线程等待，哪个线程继续运行。</p>
+<pre><code class="java">public static void main(String[] args) {
+    Printer p = new Printer();
+    new Thread() {
+        public void run() {
+            try {
+                while (true) {
+                    p.print1();
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }.start();
+
+    new Thread() {
+        public void run() {
+            try {
+                while (true) {
+                    p.print2();
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }.start();
+
+    new Thread() {
+        public void run() {
+            try {
+                while (true) {
+                    p.print3();
+                }
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }.start();
+}
+
+
+class Printer {
+    private ReentrantLock r = new ReentrantLock();
+    Condition c1 = r.newCondition();
+    Condition c2 = r.newCondition();
+    Condition c3 = r.newCondition();
+    private int flag = 1;
+
+    public void print1() throws InterruptedException {
+        r.lock();
+        if (flag != 1) {
+            c1.await();
+        }
+        System.out.println(&quot;线程1&quot;);
+        flag = 2;
+        c2.signal();
+        r.unlock();
+    }
+
+    public void print2() throws InterruptedException {
+        r.lock();
+        if (flag != 2) {
+            c2.await();
+        }
+        System.out.println(&quot;线程2&quot;);
+        flag = 3;
+        c3.signal();
+        r.unlock();
+    }
+
+    public void print3() throws InterruptedException {
+        r.lock();
+        if (flag != 3) {
+            c3.await();
+        }
+        System.out.println(&quot;线程3&quot;);
+        flag = 1;
+        c1.signal();
+        r.unlock();
+    }
+}</code></pre>
+<h2 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h2><p>线程组就像是个容器一样，只不过装的都是线程，可以利用它来做一些批量化的操作。</p>
+<pre><code class="java">public static void main(String[] args) {
+    ThreadGroup tg = new ThreadGroup(&quot;新线程组&quot;);
+    MyRunnable mr = new MyRunnable();  // 此类实现 Runnable 接口，不单独敲了
+
+    Thread t1 = new Thread(tg, mr, &quot;张三&quot;);  // 这个操作是把 t1 加到新的线程组里
+    Thread t2 = new Thread(tg, mr, &quot;李四&quot;);
+}</code></pre>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>线程池也可以看做一个容器，但是呢，在线程池里的线程，在执行结束之后，不会死掉，可以反复利用。因为开一个新的线程的成本太高了，放在线程池里这样的缓存操作可以节省资源，当需要某一条线程的时候直接调用就可以，其实现需要 Executor 和 ExecutorService 来实现。Executor 有一个静态方法叫 newFixedThreadPool 来获取线程池</p>
+<pre><code class="java">public static void main(String[] args) {
+    ExecutorService pool = Executor.newFixedThreadPool(2);  // 规定池子装多少线程
+    pool.submit(new MyRunnable());
+    pool.submit(new MyRunnable());
+
+    pool.shutdown();  // 此方法可以关闭线程池
+}</code></pre>
+<h1 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h1><p>GUI 这块用的很少，作为了解就可以了</p>
+<h2 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h2><p>比如我们点一个窗口的关闭按钮或者点最小化按钮，希望它做出一些反应，就需要对其进行监听</p>
+<pre><code class="java">public static void main(String[] args) {
+    Frame f = new Frame(&quot;第一窗口&quot;);
+    f.setSize(400, 600);  // 设置窗口大小
+    f.setLocation(500, 50);  // 设置窗口初始位置
+    f.setIconImage(Toolkit.getDefaultToolkit().creatImage(&quot;xxx.pnh&quot;));
+    Button b1 = new Button(&quot;按钮&quot;);
+    f.add(b1);
+    f.setLayout(new FlowLayout());  // 还有很多布局，下面说
+    f.addWindowListener(new WindowAdapter() {  // 利用匿名内部类实现
+        @Override
+        public void windowClosing(WindowEvent e) {
+            System.exit(0);
+        }
+    });
+    f.setVisible(true);  // 直接 frame 出来的那个对象是不可见的
+}</code></pre>
+<p>这里通过抽象类 WindowAdapter 来进行方法的重写，当一个事件发生的时候，应该做出什么操作。这个 WindowAdapter 里所有的方法都是空的，我们需要用到哪个就重写哪个就可以了。</p>
+<p>另外布局方面还有很多其他的布局：</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200611204306927.png" alt="image-20200611204306927"></p>
+<p>还有就是鼠标监听，键盘监听，和窗口监听基本一样，键盘监听的话需要借助 KeyEvent 来判断按哪个按键。 还有一个是动作监听，可以同时监听鼠标和键盘的一些操作。</p>
+<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>网络传输中有 UDP（User Datagram Protocol） 协议和 TCP（Transmission Control Protocol）协议。其中 UDP 协议考虑面向无连接，数据传输不安全，但是速度快，它不区分客户端和服务端；TCP 协议有三次握手，客户端向服务端发送请求，服务端响应，传输数据，其数据通讯相对安全，速度略低，区分服务端和客户端。</p>
+<h2 id="UDP传输"><a href="#UDP传输" class="headerlink" title="UDP传输"></a>UDP传输</h2><p>这里就是一个 Sender 做定向的发送，然后有一个 Receiver 等着，规定好 URL 和 端口，就可以单纯的发和接收了。（以下内容较视频做了一些修改）</p>
+<p><strong>Sender 代码：</strong></p>
+<pre><code class="java"> public static void main(String[] args) throws Exception {
+     Scanner sc = new Scanner(System.in);
+     DatagramSocket socket = new DatagramSocket();  // 创建 socket，相当于创建码头
+     String content;
+     DatagramPacket packet;
+     while (true) {
+         content = sc.nextLine();  // 获取 Sender 每次发送的内容
+         packet = new DatagramPacket(content.getBytes(),   // 获取 byte 数组
+                                     content.getBytes().length,  // 内容长度
+                                     InetAddress.getByName(&quot;127.0.0.1&quot;), 
+                                     6666);
+         socket.send(packet);
+         if (content.equals(&quot;quit&quot;)) {
+             break;
+         }
+     }
+     sc.close();
+     socket.close();  // socket 本质也是 IO 流传输，需要关流
+
+ }</code></pre>
+<p><strong>Receiver 代码：</strong></p>
+<pre><code class="java">public static void main(String[] args) throws Exception {
+    DatagramSocket socket = new DatagramSocket(6666);
+    DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
+
+    while (true) {  
+        socket.receive(packet);  // 先让它开始等待接收
+        byte[] arr = packet.getData();
+        int len = packet.getLength();
+        String ip = packet.getAddress().getHostAddress();
+        int port = packet.getPort();
+        // 如果内容是设定的特殊事件，则停止接收，且也不会输出这个特殊事件内容
+        if (new String(arr, 0, len).equals(&quot;quit&quot;)) {
+            break;
+        }
+
+        System.out.println(ip + &quot; : &quot; + port + &quot; : &quot; + new String(arr, 0, len));
+    }
+    socket.close();
+}</code></pre>
+<p>上面就算是勉强实现 Receiver 持续等待 Sender 发送数据并且接收，一直等到一个特殊的内容在 Sender 这面出现，才会两面都断开连接。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+
+<script src="/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        id: 'http://yoursite.com/2020/05/21/Java-Note-P5-%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/', // 可选。默认为 location.href
+        owner: 'BlckKn1fe',
+        repo: 'gitment-saving',
+        oauth: {
+            client_id: '3944833dd841590cab30',
+            client_secret: '3466e3197bcf0b5fa92589bef7a2279eb706913c',
+        },
+    })
+    gitment.render('comments')
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2019-2020 黑刀</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 542px;
+        }
+        .nav.fullscreen {
+            margin-left: -542px;
+        }
+        .nav-left {
+            width: 150px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 542px;
+            margin-left: -542px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 542px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
