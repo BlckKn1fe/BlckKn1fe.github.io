@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>黑刀的个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="黑刀的个人博客">
+  <title>TCP上传文件 | 黑刀的个人博客</title>
+  <meta name="keywords" content=" Java , TCP , 网络协议 ">
+  <meta name="description" content="TCP上传文件 | 黑刀的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="用 Java 实现了一个极其简陋的 TCP文件上传，其服务端使用多线程，内容全部来源于 Java Note P5 黑马程序员中的教程，此文档主要用于保存案例代码 客户端： package com.heima.tcp;  import java.io.*; import java.net.Socket; import java.util.Scanner;  public class MyClient">
 <meta property="og:type" content="article">
@@ -54,7 +54,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -371,12 +371,74 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-TCP上传文件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于风宇楼"><span class="toc-text">关于风宇楼</span></a></li></ol></li></ol>
+        <h1 class="article-title">TCP上传文件</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="网络协议">网络协议</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Java</a>
+            
+            <a class="color4">TCP</a>
+            
+            <a class="color5">网络协议</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-06-13 18:06:39'>2020-06-13 09:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:523</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -389,31 +451,128 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于风宇楼"><a href="#关于风宇楼" class="headerlink" title="关于风宇楼"></a>关于风宇楼</h2><p><strong>风宇楼</strong> 是黑刀（丁冠宇）的个人站。</p>
-<p>我会在这里记录一些自己在学习道路上的经验，遇到的困难，生活感想等等。每一天发生什么谁也不会知道，只有脚踏出家门和这个世界上每一个个体进行交互，才会产生各种奇妙的事情。恰恰就是这样点点滴滴的事情编制出我们过往的历史故事，可有句老话说的好，好记性不如烂笔头；对我来说，很少记录生活，有时候回头看看过去，似乎什么都没发生又好像发生了很多事。</p>
-<p>所以决定在这里开启我的个人记录之旅，能坚持下来养成习惯，相信不仅对我有帮助，也会给有需要的人提供一点经验。有幸的话，多年以后当回首自己曾经留下的一个个脚印，也会有一份自豪感和充实感。加油！</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用 Java 实现了一个极其简陋的 TCP文件上传，其服务端使用多线程，内容全部来源于 <strong>Java Note P5 黑马程序员中的教程</strong>，此文档主要用于保存案例代码</p>
+<p><strong>客户端：</strong></p>
+<pre><code class="java">package com.heima.tcp;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+import java.io.*;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class MyClient {
+    public static void main(String[] args) throws Exception {
+        // 1. 提示要上传路径，验证
+        File file = getFile();
+        // 2. 发送文件名到服务端
+        Socket socket = new Socket(&quot;127.0.0.1&quot;, 9999);
+        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintStream ps = new PrintStream(socket.getOutputStream());
+        ps.println(file.getName());
+        // 6. 接收结果，如果存在给予提示，程序直接退出
+        String result = br.readLine();
+        if (&quot;存在&quot;.equals(result)){
+            System.out.println(&quot;您上传的文件已经存在，请不要重复上传&quot;);
+        }
+        else {
+        // 7. 如果不存在，定义 FileInputStream 读取文件，写出到服务器
+            FileInputStream fis = new FileInputStream(file);
+            int len;
+            byte[] arr = new byte[8192];
+            while ((len = fis.read(arr)) != -1) {
+                ps.write(arr, 0, len);
+            }
+            fis.close();
+        }
+        socket.close();
+    }
+
+    private static File getFile() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入一个文件路径: &quot;);
+        File file = new File(sc.nextLine());
+        while(true) {
+            if (!file.exists()) {
+                System.out.println(&quot;目标文件不存在，请重新输入：&quot;);
+                file = new File(sc.nextLine());
+            } else if (file.isDirectory()) {
+                System.out.println(&quot;请不要输入文件夹路径，重新输入：&quot;);
+                file = new File(sc.nextLine());
+            } else {
+                return file;
+            }
+        }
+    }
+}</code></pre>
+<p><strong>服务端：</strong></p>
+<pre><code class="java">package com.heima.tcp;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class MyServer {
+    public static void main(String[] args) throws Exception{
+        // 3. 建立多线程服务器
+        ServerSocket server = new ServerSocket(9999);
+        System.out.println(&quot;服务器启动成功，绑定9999端口&quot;);
+        // 4. 读取文件名
+        while (true) {
+            final Socket socket = server.accept();
+            new Thread() {
+                public void run() {
+                    try {
+                        InputStream is = socket.getInputStream();
+                        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                        PrintStream ps = new PrintStream(socket.getOutputStream());
+                        // 5. 判断文件是否存在，将结果返回给客户端
+                        String fileName = br.readLine();
+                        File dir = new File(&quot;upload&quot;);
+                        dir.mkdir();
+
+                        File file = new File(dir, fileName);
+                        if (file.exists()) {
+                            ps.println(&quot;存在&quot;);
+                            socket.close();
+                        }
+                        else {
+                            ps.println(&quot;不存在&quot;);
+                            // 8. 定义 FileOutPutStream，读取数据，写到本地
+                            FileOutputStream fos = new FileOutputStream(file);
+                            byte[] arr = new byte[8192];
+                            int len;
+                            while ((len = is.read(arr)) != -1) {
+                                fos.write(arr, 0, len);
+                            }
+                            fos.close();
+                            socket.close();
+                        }
+
+                    } catch(IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+        }
+    }
+}
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
 
@@ -421,7 +580,7 @@
 
 <script>
     var gitment = new Gitment({
-        id: 'http://yoursite.com/', // 可选。默认为 location.href
+        id: 'http://yoursite.com/2020/06/13/TCP%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/', // 可选。默认为 location.href
         owner: 'BlckKn1fe',
         repo: 'gitment-saving',
         oauth: {
@@ -433,17 +592,24 @@
 </script>
 
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">©2019-2020 黑刀</p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>
