@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>单例设计模式（Singleton） | 黑刀的个人博客</title>
-  <meta name="keywords" content=" Note , 设计模式 ">
-  <meta name="description" content="单例设计模式（Singleton） | 黑刀的个人博客">
+  <title>虚拟机的坑 | 黑刀的个人博客</title>
+  <meta name="keywords" content=" Linux , 服务器 ">
+  <meta name="description" content="虚拟机的坑 | 黑刀的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="此播客作为记录个人学习经验，生活以及回忆使用">
 <meta property="og:type" content="article">
@@ -404,9 +404,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-单例设计模式（Singleton）" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-虚拟机的坑" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">单例设计模式（Singleton）</h1>
+        <h1 class="article-title">虚拟机的坑</h1>
     
     <div class="article-meta">
         
@@ -415,7 +415,7 @@
         <span class="book">
             <i class="iconfont icon-category"></i>
             
-            <a  data-rel="设计模式">设计模式</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
@@ -423,21 +423,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">Note</a>
+            <a class="color1">Linux</a>
             
-            <a class="color5">设计模式</a>
+            <a class="color4">服务器</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-06-15 23:13:47'>2020-06-10 16:40</time>
+            发布时间 : <time class="date" title='最后更新: 2020-06-15 23:13:48'>2020-06-14 10:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:264</span>
+        <span>字数:1.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -467,7 +467,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Ubuntu"><span class="toc-text">安装 Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-VMWare-Tools"><span class="toc-text">安装 VMWare Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置-Git-用户名，密码，秘钥"><span class="toc-text">设置 Git 用户名，密码，秘钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Tar"><span class="toc-text">安装 Tar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-MySQL"><span class="toc-text">安装 MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-text">Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -483,52 +483,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>单例设计模式主要目的就是全局有且只有一个该对象，这个是唯一的，可以全局调用，比如 Logger 就是这样的存在。下面简单用三种方式来实现，这部分笔记慢慢补充起来。</p>
-<p><strong>第一种实现，饿汉式（开发用）：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
+        <h2 id="安装-Ubuntu"><a href="#安装-Ubuntu" class="headerlink" title="安装 Ubuntu"></a>安装 Ubuntu</h2><p>安装 Ubuntu 的时候切记不要选择推荐项目</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200614105453648.png" alt="image-20200614105453648"></p>
+<p>主要是这一步，如果选择了第二项的话，它会在安装之前让你设置账户密码什么的，如果填写的话，Ubuntu 进去就直接到这个界面，你么得选择</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/image-20200614105639801.png" alt="image-20200614105639801"></p>
+<p>可以点 Skip，这一步是安装语言包什么的，但是我第一次安装的时候，点了 Skip 直接卡在一个黑屏界面了… 所以直接选第三项安装就完事了，然后进入安装阶段，选择语言，时区什么的，最后也对到上图这个界面，再点 Skip 就没事。</p>
+<p>再然后就是修改一下镜像源，可以通过选择 <code>系统设置 -&gt; 软件和更新 选择下载服务器 -&gt; &quot;mirrors.aliyun.com&quot;</code> ，也可以手动修改。</p>
+<p>打开 <code>/etc/apt/sources.list</code> 然后全部代替为（以下内容直接拷贝来的，放心使用）</p>
+<p><strong>ubuntu 20.4 的配置</strong>：（其他自行查阅 <a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.4ee41b11IEUSBW）" target="_blank" rel="noopener">https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.4ee41b11IEUSBW）</a></p>
+<pre><code>deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
 
-class Singleton() {
-    // 在类中直接创建好对象
-    private Singleton s = new Singleton();
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-    // 提供 accessor
-    public static Singleton getInstance() {
-        return s;
-    }
-}</code></pre>
-<p><strong>第二种，懒汉式：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
 
-class Singleton() {
-    // 声明
-    private Singleton s;
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-    // 提供 accessor
-    public static Singleton getInstance() {
-        if (s == null) {
-            // 这里有线程隐患，从而产生两次对象
-            s = new Singleton();
-        }
-        return s;
-    }
-}</code></pre>
-<p><strong>第三种，作为了解：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
 
-class Singleton() {
-    // 在这里即使 public 修饰了，但是也没办法修改它
-    public static final Singleton s = new Singleton();
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-}</code></pre>
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</code></pre><h2 id="安装-VMWare-Tools"><a href="#安装-VMWare-Tools" class="headerlink" title="安装 VMWare Tools"></a>安装 VMWare Tools</h2><p>这玩意简单来说就是让你用的更舒服，一般在安装系统的时候就会自动提示让安装上，如果错过了的话，进入系统之后可以点击 <code>虚拟机 --&gt; 安装 VMWare Tools</code> 来实现。在桌面会出现一个新的光碟图标的文件，双击安装即可。</p>
+<h2 id="设置-Git-用户名，密码，秘钥"><a href="#设置-Git-用户名，密码，秘钥" class="headerlink" title="设置 Git 用户名，密码，秘钥"></a>设置 Git 用户名，密码，秘钥</h2><p>执行下面两条命令</p>
+<pre><code>git config --global user.name &quot;xxx&quot;
+
+git config --global user.email &quot;xxx@xxx.com&quot;</code></pre><p>之后生成 SSH 秘钥</p>
+<pre><code>ssh-keygen -t rsa -C &quot;xxx@xxx.com&quot;</code></pre><p>安装 SSH 服务端和客户端</p>
+<pre><code>sudo apt-get install openssh-client 
+sudo apt-get install openssh-server</code></pre><p>然后要修改一个配置文件，这样可以从外部来连接，修改 <code>PermitRootLogin</code> 和 <code>PasswordAuthentication</code></p>
+<pre><code>sudo nano /etc/ssh/sshd_config</code></pre><p><strong>还要注意一点，如果要准备去连接的电脑上有之前的记录，记得把记录删除。</strong></p>
+<h2 id="安装-Tar"><a href="#安装-Tar" class="headerlink" title="安装 Tar"></a>安装 Tar</h2><h2 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>这块是真的坑死我… 什么样的问题都让我碰到了，什么1396 Error，1035 Error，1698 Error啥的全让我碰到了… 最开始是通过 apt 安装… 但是就是少配置这个步骤… debian.cnf 文件里根本就没有初始的账号密码… 试过添加 <code>skip-grant-table</code> 发现也不行…然后卸了重装MySQL两次，第二次操作失误导致 MySQL 无法启动… 之后就直接重新装了虚拟机… 折腾了一溜十三招。最后用 wget 直接去下个包，通过 dpkg 来安装，然后执行 apt update 和 apt upgrade 命令更新 apt，再执行 apt install mysql-server 和 spt install mysql-client</p>
+<p>（这次是通过外部主机 SSH 来安装的）然后然后然后… 坑又来了… 还是没出现让配置默认密码这个界面，直接就让选密码强度了… 我真是裂了… 然后这回 debian.cnf 文件就有数据了，用 cat 查看到初始给的账号密码，是可以正常登陆的，但是谁会每次都敲这么复杂的密码… 但是作为备份还是不错的，我就考虑留下，然后自己在创一个管理员权限的用户。创建用户这也遇到坑了… 直接留正确的操作顺序吧… 显示创建用户，虽然还没开始学 MySQL，但是 @ 后应该表示一个域，这个似乎可以换成 <code>%</code> 代表全部列表</p>
+<pre><code class="mysql">create user &#39;root&#39;@&#39;localhost&#39; identified by &#39;111111&#39;;</code></pre>
+<p>创建之后刷新一次，避免奇奇怪怪的坑，在用户/用户权限这面，操作一次刷新一次准没错…</p>
+<pre><code class="mysql">flush privileges;</code></pre>
+<p>之后就是赋权了，第一个星号我估计应该是代表所有数据库的意思吧</p>
+<pre><code class="mysql">grant all privileges on *.* to &#39;root&#39;@&#39;localhost&#39;;</code></pre>
+<p>再然后，注意一点，注意一点，注意一点，删除用户的话，先执行 Delete 语句，然后刷新，再再再执行 drop 语句应该最稳妥… 一开始我直接 drop 是不行的… 但是 Delete 可以，然后 Delete 之后在列表里是看不到了… 但是似乎好像还残留什么东西… 没学不懂… 还需要再执行 drop 语句</p>
+<pre><code class="mysql">Delete FROM user where user=&#39;root&#39; and Host=&#39;localhost&#39;;
+flush privileges;
+drop user root@&#39;localhost&#39;;</code></pre>
+<p>最后！修改密码的正解在这里，以及 MySQL 版本，原型环境和加密协议：</p>
+<pre><code class="mysql">alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;666666&#39;;
+-- 8.0.20 MySQL Community Server - GPL
+-- Ubuntu 20.04 LTS
+-- MySQL 8.0 加密规则</code></pre>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>啥也不说了，直接上正解，注意全称要用管路员模式！</p>
+<blockquote>
+<p><a href="https://www.bilibili.com/video/BV1VE411x7fZ" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1VE411x7fZ</a></p>
+</blockquote>
+<p>第一步，下载安装包，解压缩</p>
+<p>第二步，设置环境变量，提前创好文件夹，执行 <code>mysqld --intialize --console</code> 和 <code>mysqld -install mysql</code> 命令，初始化+添加服务</p>
+<p>第三步，启动服务 <code>net start mysql</code></p>
+<p>第四步，用随机给的密码进入之后，修改密码 </p>
+<p><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_nativa_password BY &#39;111111&#39;;</code></p>
+<p>最后 <code>flush privileges;</code> 结束</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
@@ -550,7 +560,7 @@ class Singleton() {
 
 <script>
     var gitment = new Gitment({
-        id: 'http://yoursite.com/2020/06/10/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/', // 可选。默认为 location.href
+        id: 'http://yoursite.com/2020/06/14/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%9D%91/', // 可选。默认为 location.href
         owner: 'BlckKn1fe',
         repo: 'gitment-saving',
         oauth: {

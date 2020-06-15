@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>单例设计模式（Singleton） | 黑刀的个人博客</title>
-  <meta name="keywords" content=" Note , 设计模式 ">
-  <meta name="description" content="单例设计模式（Singleton） | 黑刀的个人博客">
+  <title>Linux的坑 | 黑刀的个人博客</title>
+  <meta name="keywords" content=" Linux , 服务器 ">
+  <meta name="description" content="Linux的坑 | 黑刀的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="此播客作为记录个人学习经验，生活以及回忆使用">
 <meta property="og:type" content="article">
@@ -404,9 +404,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-单例设计模式（Singleton）" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux的坑" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">单例设计模式（Singleton）</h1>
+        <h1 class="article-title">Linux的坑</h1>
     
     <div class="article-meta">
         
@@ -415,7 +415,7 @@
         <span class="book">
             <i class="iconfont icon-category"></i>
             
-            <a  data-rel="设计模式">设计模式</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
@@ -423,21 +423,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">Note</a>
+            <a class="color1">Linux</a>
             
-            <a class="color5">设计模式</a>
+            <a class="color4">服务器</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-06-15 23:13:47'>2020-06-10 16:40</time>
+            发布时间 : <time class="date" title='最后更新: 2020-06-15 23:13:47'>2020-06-14 10:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:264</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -467,7 +467,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -483,53 +483,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>单例设计模式主要目的就是全局有且只有一个该对象，这个是唯一的，可以全局调用，比如 Logger 就是这样的存在。下面简单用三种方式来实现，这部分笔记慢慢补充起来。</p>
-<p><strong>第一种实现，饿汉式（开发用）：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
-
-class Singleton() {
-    // 在类中直接创建好对象
-    private Singleton s = new Singleton();
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-    // 提供 accessor
-    public static Singleton getInstance() {
-        return s;
-    }
-}</code></pre>
-<p><strong>第二种，懒汉式：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
-
-class Singleton() {
-    // 声明
-    private Singleton s;
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-    // 提供 accessor
-    public static Singleton getInstance() {
-        if (s == null) {
-            // 这里有线程隐患，从而产生两次对象
-            s = new Singleton();
-        }
-        return s;
-    }
-}</code></pre>
-<p><strong>第三种，作为了解：</strong></p>
-<pre><code class="java">public void main(String[] args) {
-    Singleton s = Singleton.getInstance();
-}
-
-class Singleton() {
-    // 在这里即使 public 修饰了，但是也没办法修改它
-    public static final Singleton s = new Singleton();
-    // 私有构造函数，禁止外部创造该对象
-    private Singleton() {};
-}</code></pre>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
     </div>
@@ -550,7 +504,7 @@ class Singleton() {
 
 <script>
     var gitment = new Gitment({
-        id: 'http://yoursite.com/2020/06/10/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/', // 可选。默认为 location.href
+        id: 'http://yoursite.com/2020/06/14/Linux%E7%9A%84%E5%9D%91/', // 可选。默认为 location.href
         owner: 'BlckKn1fe',
         repo: 'gitment-saving',
         oauth: {
