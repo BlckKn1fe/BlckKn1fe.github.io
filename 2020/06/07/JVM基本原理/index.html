@@ -506,7 +506,21 @@
 
     <div id="comments"></div>
 <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://jjeejj.github.io/js/gitment.js"></script>
+
+<script src="/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        id: 'http://yoursite.com/2020/06/07/JVM%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/', // 可选。默认为 location.href
+        owner: 'BlckKn1fe',
+        repo: 'gitment-saving',
+        oauth: {
+            client_id: '3944833dd841590cab30',
+            client_secret: '3466e3197bcf0b5fa92589bef7a2279eb706913c',
+        },
+    })
+    gitment.render('comments')
+</script>
 
 
 
