@@ -18,8 +18,11 @@
 <meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625170741.png">
 <meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625170848.png">
 <meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625171106.png">
+<meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625220840.png">
+<meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625230319.png">
+<meta property="og:image" content="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625233642.png">
 <meta property="article:published_time" content="2020-06-19T07:04:54.000Z">
-<meta property="article:modified_time" content="2020-06-25T11:49:59.374Z">
+<meta property="article:modified_time" content="2020-06-26T13:13:10.461Z">
 <meta property="article:author" content="黑刀">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="MySQL">
@@ -177,7 +180,7 @@
     <div><a  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="13">
-<input type="hidden" id="yelog_site_word_count" value="46.4k">
+<input type="hidden" id="yelog_site_word_count" value="49.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -433,12 +436,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-06-25 19:49:59'>2020-06-19 15:04</time>
+            发布时间 : <time class="date" title='最后更新: 2020-06-26 21:13:10'>2020-06-19 15:04</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:5.5k</span>
+        <span>字数:8.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -457,7 +460,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的四大组成部分"><span class="toc-text">MySQL的四大组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据定义语言（DDL）"><span class="toc-text">数据定义语言（DDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作语言（DML）"><span class="toc-text">数据操作语言（DML）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据查询语言（DQL）"><span class="toc-text">数据查询语言（DQL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据控制语言（DCL）"><span class="toc-text">数据控制语言（DCL）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的列类型"><span class="toc-text">数据库的列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名规范"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库字段属性"><span class="toc-text">数据库字段属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#库和表的基本操作（DDL）"><span class="toc-text">库和表的基本操作（DDL）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看数据库"><span class="toc-text">查看数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建表"><span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改表-表字段"><span class="toc-text">修改表 &#x2F; 表字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的操作（DML重点）"><span class="toc-text">数据的操作（DML重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入数据"><span class="toc-text">插入数据:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改数据"><span class="toc-text">修改数据:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据"><span class="toc-text">删除数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库查询（重点）"><span class="toc-text">数据库查询（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询指定字段"><span class="toc-text">查询指定字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内容拼接"><span class="toc-text">内容拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去重"><span class="toc-text">去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT-表达式"><span class="toc-text">SELECT 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询"><span class="toc-text">模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联表查询"><span class="toc-text">联表查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键"><span class="toc-text">外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自连接"><span class="toc-text">自连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页和排序"><span class="toc-text">分页和排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子查询"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用函数（不常用）"><span class="toc-text">常用函数（不常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚合函数"><span class="toc-text">聚合函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引分类"><span class="toc-text">索引分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加索引"><span class="toc-text">添加索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创造百万数据量"><span class="toc-text">创造百万数据量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引原则"><span class="toc-text">索引原则</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的四大组成部分"><span class="toc-text">MySQL的四大组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据定义语言（DDL）"><span class="toc-text">数据定义语言（DDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作语言（DML）"><span class="toc-text">数据操作语言（DML）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据查询语言（DQL）"><span class="toc-text">数据查询语言（DQL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据控制语言（DCL）"><span class="toc-text">数据控制语言（DCL）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的列类型"><span class="toc-text">数据库的列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名规范"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库字段属性"><span class="toc-text">数据库字段属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#库和表的基本操作（DDL）"><span class="toc-text">库和表的基本操作（DDL）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看数据库"><span class="toc-text">查看数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建表"><span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改表-表字段"><span class="toc-text">修改表 &#x2F; 表字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的操作（DML重点）"><span class="toc-text">数据的操作（DML重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入数据"><span class="toc-text">插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改数据"><span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据"><span class="toc-text">删除数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库查询（重点）"><span class="toc-text">数据库查询（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询指定字段"><span class="toc-text">查询指定字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内容拼接"><span class="toc-text">内容拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去重"><span class="toc-text">去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT-表达式"><span class="toc-text">SELECT 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询"><span class="toc-text">模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联表查询"><span class="toc-text">联表查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键"><span class="toc-text">外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自连接"><span class="toc-text">自连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页和排序"><span class="toc-text">分页和排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子查询"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用函数（不常用）"><span class="toc-text">常用函数（不常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚合函数"><span class="toc-text">聚合函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引分类"><span class="toc-text">索引分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加索引"><span class="toc-text">添加索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创造百万数据量"><span class="toc-text">创造百万数据量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引原则"><span class="toc-text">索引原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限"><span class="toc-text">权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本操作"><span class="toc-text">基本操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-text">备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计"><span class="toc-text">数据库设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#规范"><span class="toc-text">规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三大范式"><span class="toc-text">三大范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规范性和性能之间"><span class="toc-text">规范性和性能之间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC"><span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述-1"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一次通过JDBC操作"><span class="toc-text">第一次通过JDBC操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过工具类来实现"><span class="toc-text">通过工具类来实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrepareStatement"><span class="toc-text">PrepareStatement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDBC操作事务"><span class="toc-text">JDBC操作事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DBCP-C3P0"><span class="toc-text">DBCP&#x2F;C3P0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完结啦"><span class="toc-text">完结啦</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -598,7 +601,7 @@ mysql&gt; SHOW DATABASES LIKE &#39;%db&#39;; -- 以 db 结尾的数据库</code>
 <pre><code class="mysql">ALTER TABEL `表名` DROP `要删除的字段名`; -- 反引可省</code></pre>
 <p>删除表：</p>
 <pre><code class="mysql">DROP TABLE IF EXISTS `表名`; -- 反引可省</code></pre>
-<h2 id="数据的操作（DML重点）"><a href="#数据的操作（DML重点）" class="headerlink" title="数据的操作（DML重点）"></a>数据的操作（DML重点）</h2><h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据:"></a>插入数据:</h3><pre><code class="mysql">INSERT INTO `表名`(`字段1`[,`字段2`,...]) VALUES(&#39;值1&#39;[,&#39;值2&#39;,...])[,(&#39;值1&#39;[,&#39;值2&#39;,...])];
+<h2 id="数据的操作（DML重点）"><a href="#数据的操作（DML重点）" class="headerlink" title="数据的操作（DML重点）"></a>数据的操作（DML重点）</h2><h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><pre><code class="mysql">INSERT INTO `表名`(`字段1`[,`字段2`,...]) VALUES(&#39;值1&#39;[,&#39;值2&#39;,...])[,(&#39;值1&#39;[,&#39;值2&#39;,...])];
 -- 注意事项：
 -- 1. 字段和值之间，要用逗号隔开，注意值有的用单引号，数值不需要
 -- 2. 可以同时插入多行数据，VALUES 后面用多个括号扩起来，且也是逗号隔开
@@ -608,7 +611,7 @@ mysql&gt; SHOW DATABASES LIKE &#39;%db&#39;; -- 以 db 结尾的数据库</code>
 INSERT INTO `student`(`name`, `hobby`, `location`, `tel`)  
 -&gt; VALUES(&#39;test5&#39;, &#39;dance&#39;, &#39;China&#39;, 123456), 
 -&gt; (&#39;test6&#39;, &#39;gaming&#39;, &#39;CA&#39;, 666666); </code></pre>
-<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据:"></a>修改数据:</h3><p>修改数据的时候，要知道修改谁，所以需要一个给定的条件，<strong>如果条件语句没有，则修改全部该字段的诗句</strong></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>修改数据的时候，要知道修改谁，所以需要一个给定的条件，<strong>如果条件语句没有，则修改全部该字段的诗句</strong></p>
 <pre><code class="mysql">UPDATE `表名` SET 
 -&gt; `字段1` = `值1`, 
 -&gt; `字段2` = `值2`,
@@ -978,6 +981,305 @@ SELECT mock_data();</code></pre>
 <li>小数据量的表建议不要加索引</li>
 <li>索引一般应加在查找条件的字段</li>
 </ul>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>创建用户：</p>
+<pre><code class="mysql">CREATE USER 用户名 IDENTIFIED BY &#39;密码&#39;;</code></pre>
+<p>修改当前用户密码：</p>
+<pre><code class="mysql">SET PASSWORD = PASSWORD(&#39;密码&#39;);</code></pre>
+<p>修改其他用户密码：</p>
+<pre><code class="mysql">SET PASSWORD FOR 用户名 = PASSWORD(&#39;密码&#39;);</code></pre>
+<p>重命名：</p>
+<pre><code class="mysql">RENAME USER 原用户名 TO 新用户名;</code></pre>
+<p>用户授权：</p>
+<pre><code class="mysql">GRANT ALL PRIVILEGES ON *.* TO 用户名;
+-- 这个赋予了除 GRANT 权限外的所有权限</code></pre>
+<p>查询权限：</p>
+<pre><code class="mysql">SHOW GRANTS FOR 用户名[@localhost];
+-- 查看该用户权限</code></pre>
+<p>撤销权限：</p>
+<pre><code class="mysql">REVOKE ALL PRIVILEGES ON *.* FROM 用户名;</code></pre>
+<p>删除用户：</p>
+<pre><code class="mysql">DROP USER 用户名;</code></pre>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>数据备份有很多方式，可以备份一整个数据库，可备份单个或者多个表</p>
+<ol>
+<li>物理拷贝，直接把本地的数据文件拷贝走</li>
+<li>使用可视化工具可以直接右键导出</li>
+<li>使用 <code>mysqldump</code> 命令</li>
+</ol>
+<pre><code>mysqldump -h host -u username -p database [table1 table2 ...] &gt; PATH/xxx.sql
+/*
+ * -h后接数据库地址
+ * database 为数据库名
+ * table 之间用空格隔开！
+ * PATH 就是路径，文件要以 .sql 结尾
+ */</code></pre><p>用命令行的话，也可以导入 .sql 文件</p>
+<pre><code class="mysql">USE 数据库;
+SOURCE 路径;</code></pre>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><p><strong>糟糕的数据库设计：</strong></p>
+<ul>
+<li>数据冗余</li>
+<li>存储空间浪费</li>
+<li>数据更新和插入的异常</li>
+<li>程序性能差</li>
+</ul>
+<p><strong>良好的设计库设计：</strong></p>
+<ul>
+<li>节省数据的存储空间</li>
+<li>能够保证数据的完整性</li>
+<li>方便进行数据库应用系统的开发</li>
+</ul>
+<p><strong>设计一个数据库要注意的：</strong></p>
+<ul>
+<li>需求分析阶段: 分析客户的业务和数据处理需求 </li>
+<li>概要设计阶段:设计数据库的E-R模型图 , 确认需求信息的正确和完整</li>
+</ul>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625220840.png" alt=""></p>
+<p>这块偷懒截图了…</p>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><h3 id="三大范式"><a href="#三大范式" class="headerlink" title="三大范式"></a>三大范式</h3><p><strong>第一范式 (1st NF)</strong></p>
+<p>第一范式的目标是确保每列的原子性，说的通俗点就是这一列不能在细分成其他的类别了</p>
+<p><strong>第二范式(2nd NF)</strong></p>
+<p>前提：满足第一范式</p>
+<p>第二范式要求每个表只描述一件事情</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625230319.png" alt=""></p>
+<p>以这张表举例，在其中一个订单里，卖一个产品，然后对应的卖出的金额，这实际上是两回事，一个意在详细注重描述卖出的产品的相关信息，一个是在描述订单的相关的信息，所以尽可能的细分就尽可能细分。</p>
+<p><strong>第三范式(3rd NF)</strong></p>
+<p>如果一个关系满足第二范式,并且除了主键以外的其他列都不传递依赖于主键列,则满足第三范式.</p>
+<p>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
+<p>![image-20200625230828319](/Users/guanyuding/Library/Application Support/typora-user-images/image-20200625230828319.png)</p>
+<p>第三范式稍微好理解一点，比如我第一个就是想描述学生表，那在学生表中没必要把班主任的其他信息给写出来，我们只需要保留班主任姓名来作为关联部分，再去创造一个班主任表就可以了。</p>
+<h3 id="规范性和性能之间"><a href="#规范性和性能之间" class="headerlink" title="规范性和性能之间"></a>规范性和性能之间</h3><ul>
+<li>为满足某种商业目标 , 数据库性能比规范化数据库更重要</li>
+<li>在数据规范化的同时 , 要综合考虑数据库的性能</li>
+<li>有时候故意增加冗余字段，避免联表查询，节省时间提高性能</li>
+<li>通过在给定的表中插入计算列,以方便查询</li>
+</ul>
+<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>Java Database Connectivity 实际上是一套规范，在用 Java 操作数据库的时候，是需要有数据库驱动才可以通过 Java 来操作数据库，而不同的数据库厂商都有自己的驱动，这就可能会出现 Java 里光导入数据库驱动就会导入一大堆，所以呢就有一个 JDBC 规范，这些厂商遵循这个规范，那开发人员只需要掌握 JDBC 这一套规范就可以操作所有的数据。</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200625233642.png" alt=""></p>
+<p>用 Java 操作数据库的时候需要导入三个包：</p>
+<ul>
+<li>java.sql</li>
+<li>javax.sql</li>
+<li>数据库驱动包 mysql-connector-X.X.XX.jar</li>
+</ul>
+<h3 id="第一次通过JDBC操作"><a href="#第一次通过JDBC操作" class="headerlink" title="第一次通过JDBC操作"></a>第一次通过JDBC操作</h3><pre><code class="java">package com.ding.sql;
+import java.sql.*;
+
+public class SQLPractice {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = &quot;jdbc:mysql://localhost:3306/school?useUnicode=true&quot; +  // 固定格式
+                &quot;&amp;&amp;characterEncoding=utf8&quot; +  // 填写地址 &quot;?&quot; 后面是一些可修改的参数
+                &quot;&amp;&amp;useSSL=false&quot;;
+        String user = &quot;root&quot;;  // 输入用户名
+        String pwd = &quot;111111&quot;;  // 输入密码
+        // 加载驱动，这个Driver里有一块静态代码块，会自己调用 DriverManager 的 Register 方法
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        // 建立链接，本质就是获取到数据库对象，可以做库级别的操作，比如回滚
+        Connection connection = DriverManager.getConnection(url, user, pwd);  
+        // 得到声明对象，实际这东西就像是 Navicat 里的查询窗口对象一样，可以输入 sql 语句
+        Statement statement = connection.createStatement();
+        // 要写的 sql 语句
+        String sql = &quot;SELECT StudentNo, StudentName, Phone, Address FROM student&quot;;
+
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        while (resultSet.next()) {
+            System.out.println(resultSet.getObject(&quot;StudentNo&quot;));  // 这个字段名要写对
+            System.out.println(resultSet.getObject(&quot;StudentName&quot;));
+            System.out.println(resultSet.getObject(&quot;Phone&quot;));
+            System.out.println(resultSet.getObject(&quot;Address&quot;));
+            System.out.println(&quot;=====================&quot;);
+            // 这里还有 getXXX() 其他类型数据，前提是已知
+            // resultSet 也有 previous 方法
+        }
+        // 这个关闭按照从后往前的顺序关
+        resultSet.close();
+        statement.close();
+        connection.close();  // 最耗资源
+    }
+}
+</code></pre>
+<h3 id="通过工具类来实现"><a href="#通过工具类来实现" class="headerlink" title="通过工具类来实现"></a>通过工具类来实现</h3><p>由于上述代码太过复杂，而且耦合性高，可以把上述代码分成几块，比如用 properties 文件来存 driver，url，username，和 password 等需要的信息，然后通过一个 Utils 类来进行读取，而且通过这个类，可以直接获取到 Connection 对象，会让整个过程变得更清晰，耦合性也会降低一些。</p>
+<p>先是创建 properties 文件存基本信息：</p>
+<pre><code class="java">driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/school?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false
+username=root
+password=111111</code></pre>
+<p>然后去写 Utils 类：</p>
+<pre><code class="java">package com.ding.sql;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
+import java.util.Properties;
+
+public class JdbcUtils {
+    private static String driver = null;
+    private static String url = null;
+    private static String username = null;
+    private static String password = null;
+
+    static {
+        InputStream is = null;
+        try {
+            // 这里没明白为什么要用类加载器来实现，为什么不能直接用 FileInputStream
+            is = JdbcUtils.class.getClassLoader().getResourceAsStream(&quot;db.properties&quot;);
+            Properties prop = new Properties();
+            prop.load(is);
+
+            driver = prop.getProperty(&quot;driver&quot;);
+            url = prop.getProperty(&quot;url&quot;);
+            username = prop.getProperty(&quot;username&quot;);
+            password = prop.getProperty(&quot;password&quot;);
+
+            Class.forName(driver);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, username, password);
+    }
+
+    public static void release(Connection conn, Statement st, ResultSet rs) {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (st != null) {
+            try {
+                st.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="PrepareStatement"><a href="#PrepareStatement" class="headerlink" title="PrepareStatement"></a>PrepareStatement</h3><p>PrepareStatement 可以防止 SQL 注入，效率更高。SQL 注入的本质就是依靠非法字符串的拼接，来得到一个 True 的返回结果，然后骗过服务器验证，这样就能获取到服务器里的数据。</p>
+<p>PrepareStatement 实际就是把 sql 语句中所有的要传的值都变成了问号 <code>?</code>， 然后通过 PrepareStatement 自身的 SetXX 的方法来对这些 <code>?</code> 赋值</p>
+<pre><code class="java">String sql = &quot;SELECT * FROM student WHERE id = ?&quot;;
+PrepareStatement pst = conn.prepareStatement(sql);
+pst.setInt(1, 5);
+// 其他的 set 方法也一样，第一个参数表第几个问号，从 1 开始，然后第二个参数就是要传的值
+// 其余使用方法一致，在 execute 的时候不需要再传参数了</code></pre>
+<h3 id="JDBC操作事务"><a href="#JDBC操作事务" class="headerlink" title="JDBC操作事务"></a>JDBC操作事务</h3><p>这随便提一嘴，想手动操作事务要通过 Connection 对象 setAutoCommit 为 false 然后就可以正常写自己的代码了，在最后执行一下 commit 语句，然后在 finally 里协商 rollBack ，这个 rollBack 其实不写也可以，出错默认回滚。</p>
+<h3 id="DBCP-C3P0"><a href="#DBCP-C3P0" class="headerlink" title="DBCP/C3P0"></a>DBCP/C3P0</h3><p>连接池基本思想就是通过 DataSource 接口来实现，每次需要取得 Connection 对象的时候，来这个 pool 里取；这个 pool 和线程池一个意思，可以避免多次建立连接又断开连接，节省资源。各项设置呢，都有一个配置文件，比如 DBCP 用 .properties，C3P0 用 .xml 文件。这些配置文件都会配置好要用哪个数据库驱动，协议是什么，软口，host，username，password，等等一些列参数，都会在配置文件里写好。然后直接通过一个 getConnetion 的方法，获取到数据库对象，然后再通过 Statement 对象来编译 sql 语句。</p>
+<p>DBCP怎么都跑不成功… 先暂时不写… </p>
+<p>C3P0 感觉还不错，还带日志的，直接贴代码了。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;c3p0-config&gt;
+    &lt;!-- C3P0的缺省(默认)配置，
+    如果在代码中“ComboPooledDataSource ds = new ComboPooledDataSource();”
+    这样写 就表示使用的是C3P0的缺省(默认)配置信息来创建数据源
+    --&gt;
+    &lt;default-config&gt;
+        &lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/jdbcStudy? useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;useSSL=true&lt;/property&gt;
+        &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+        &lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;
+        &lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;
+        &lt;property name=&quot;initialPoolSize&quot;&gt;10&lt;/property&gt;
+        &lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;
+        &lt;property name=&quot;maxPoolSize&quot;&gt;20&lt;/property&gt;
+    &lt;/default-config&gt;
+
+    &lt;!--C3P0的命名配置，如果在代码中“ComboPooledDataSource ds =
+    new ComboPooledDataSource(&quot;MySQL&quot;);”
+    这样写就表示使用的是name是MySQL的配置信息来创建数据 源
+    --&gt;
+    &lt;named-config name=&quot;MySQL&quot;&gt;
+        &lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/school?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;useSSL=false&lt;/property&gt;
+        &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+        &lt;property name=&quot;password&quot;&gt;111111&lt;/property&gt;
+        &lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;
+        &lt;property name=&quot;initialPoolSize&quot;&gt;10&lt;/property&gt;
+        &lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;
+        &lt;property name=&quot;maxPoolSize&quot;&gt;20&lt;/property&gt;
+    &lt;/named-config&gt;
+
+&lt;/c3p0-config&gt;</code></pre>
+<p>Utils文件代码：</p>
+<pre><code class="java">package com.ding.pool;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JdbcUtils_C3P0 {
+        private static ComboPooledDataSource ds = null;
+
+        static {
+            try {
+                ds = new ComboPooledDataSource(&quot;MySQL&quot;);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static Connection getConnection() throws SQLException {
+            return ds.getConnection();
+        }
+
+    public static void release(Connection conn, Statement st, ResultSet rs) {
+       // Code.. 省略，上面有
+    }
+}
+</code></pre>
+<p>测试代码：</p>
+<pre><code class="java">package com.ding.pool;
+
+import java.sql.*;
+
+public class TestC3P0 {
+    public static void main(String[] args) throws SQLException {
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            conn = JdbcUtils_C3P0.getConnection();
+            String sql = &quot;SELECT StudentName, StudentNo FROM student WHERE StudentNo = ?&quot;;
+            st = conn.prepareStatement(sql);
+            st.setInt(1, 1003);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString(&quot;StudentName&quot;));
+                System.out.println(rs.getString(&quot;StudentNo&quot;));
+                System.out.println(&quot;===========&quot;);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            JdbcUtils_C3P0.release(conn, st, rs);
+        }
+    }
+}</code></pre>
+<h2 id="完结啦"><a href="#完结啦" class="headerlink" title="完结啦"></a>完结啦</h2><p>下一步就是去搞前端，然后复习 Java，这两样同时搞完之后去看 Java Web 开发。前端的 JS 可能会持久化学习… 考虑将其作为自己第二编程语言，2020年6月26日。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
