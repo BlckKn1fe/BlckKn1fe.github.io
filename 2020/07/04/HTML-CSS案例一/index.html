@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux的坑 | 黑刀的个人博客</title>
-  <meta name="keywords" content=" Linux , 服务器 ">
-  <meta name="description" content="Linux的坑 | 黑刀的个人博客">
+  <title>HTML/CSS案例一 | 黑刀的个人博客</title>
+  <meta name="keywords" content=" 前端 , HTML , CSS ">
+  <meta name="description" content="HTML/CSS案例一 | 黑刀的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="这里简单的模仿了学成网，代码有点长，先放 HTML 代码，分块放 Header&lt;!-- 头部导航栏 --&gt; &lt;div class&#x3D;&quot;header w&quot;&gt;     &lt;!-- 导航栏中的log --&gt;     &lt;div class&#x3D;&quot;logo&quot;&gt;         &lt;img src&#x3D;&quot;imgs&#x2F;log">
 <meta property="og:type" content="article">
@@ -427,9 +427,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux的坑" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-HTML-CSS案例一" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux的坑</h1>
+        <h1 class="article-title">HTML/CSS案例一</h1>
     
     <div class="article-meta">
         
@@ -439,7 +439,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a>
+            <a  data-rel="前端">前端</a>
             
         </span>
         
@@ -447,21 +447,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">Linux</a>
+            <a class="color3">前端</a>
             
-            <a class="color4">服务器</a>
+            <a class="color5">HTML</a>
+            
+            <a class="color4">CSS</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-06-15 23:13:47'>2020-06-14 10:52</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-07 02:08:05'>2020-07-04 23:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:396</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -496,7 +498,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>以下为模仿小米商城中某一商品栏的内容进行的模仿，成品结果大概如下图：</p>
+<p><img src="https://images-1259064069.cos.ap-guangzhou.myqcloud.com/images/20200704235256.png" alt=""></p>
+<p>代码如下：</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333
+        }
+
+        .box {
+            width: 300px;
+            height: 415px;
+            background-color: #fff;
+            margin: 100px auto;
+        }
+
+        .box img {
+            width: 100%;
+        }
+
+        .review {
+            height: 70px;
+            font-size: 14px;
+            padding: 0px 30px;
+            margin-top: 30px;
+        }
+
+        .appraise {
+            padding: 0px 30px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+
+        .info {
+            font-size: 14px;
+            margin-top: 15px;
+            padding: 0px 30px;
+        }
+
+        .info h4 {
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .info span {
+            color: #ff6700
+        }
+
+        .info em {
+            font-style: normal;
+            color: #ebe4e0;
+            margin: 0 5px 0 15px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;box&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;img/1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+        &lt;p class=&quot;review&quot;&gt;评论信息...评论信息...评论信息...评论信息...评论信息...评论信息...&lt;/p&gt;
+        &lt;div class=&quot;appraise&quot;&gt;来自 黑刀 的评价&lt;/div&gt;
+        &lt;div class=&quot;info&quot;&gt;
+            &lt;h4&gt;&lt;a href=&quot;#&quot;&gt;Redmi AirDots真无线蓝...&lt;/a&gt;&lt;/h4&gt;
+            &lt;em&gt;|&lt;/em&gt;
+            &lt;span&gt;99.9元&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>注意事项：</p>
+<ul>
+<li>标签具有语义，合适的地方用合适的标签，如 p 是段落文字，h 为（产品）标题等等</li>
+<li>类名多不要紧，可以更精确定位每一个盒子</li>
+<li>padding 和 margin 混着用没问题，灵活使用</li>
+<li>多操作，多利用工具练习布局思路</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lding1003@gmail.com </span>
     </div>
